@@ -1,4 +1,6 @@
 {
   "accentColor": "",
-  "textFontFamily": "メイリオ"
+  "textFontFamily": "メイリオ",
+  "cssTheme": "Minimal",
+  "theme": "obsidian"
 }
