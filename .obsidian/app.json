@@ -1,5 +1,7 @@
 {
   "alwaysUpdateLinks": true,
   "strictLineBreaks": true,
-  "attachmentFolderPath": "01_Assets"
+  "attachmentFolderPath": "01_Assets",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "04_Article"
 }
