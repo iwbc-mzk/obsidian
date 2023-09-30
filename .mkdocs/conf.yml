@@ -8,3 +8,6 @@ docs:
   - 04_Article
 files:
   - 01_Assets
+scripts:
+  - mathjax.js
+  - katex.js
