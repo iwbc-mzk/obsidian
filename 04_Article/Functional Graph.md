@@ -1,8 +1,12 @@
+## 概要
 
-https://atcoder.jp/contests/abc256/tasks/abc256_e
-N頂点N辺の有向グラフの内、それぞれの頂点の出次数が1のものをFunctional Graphと呼ぶ。
-各頂点から$t = f(v)$のように遷移先が決定するから。
+N頂点N辺の有向グラフの内、それぞれの頂点の出次数が1のものをFunctional Graphと呼ぶ。各頂点から$t = f(v)$のように遷移先が決定するから。
+
 下記のような性質がある。
+
 1. 各連結成分ごとに閉路が存在する。つまり 連結成分の個数 = 閉路の個数 となる
 2. 閉路は各連結成分ごとに1つのみ
 3. 連結成分ごとに必ず閉路が存在する + 辺数がN = 任意の点からN回移動したときの頂点は**閉路上の頂点**になる。
+
+## 参考
+- [https://atcoder.jp/contests/abc256/tasks/abc256_e](https://atcoder.jp/contests/abc256/tasks/abc256_e)
