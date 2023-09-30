@@ -302,6 +302,23 @@ i18n = ["babel (>=2.9.0)"]
 min-versions = ["babel (==2.9.0)", "click (==7.0)", "colorama (==0.4)", "ghp-import (==1.0)", "importlib-metadata (==4.3)", "jinja2 (==2.11.1)", "markdown (==3.2.1)", "markupsafe (==2.0.1)", "mergedeep (==1.3.4)", "packaging (==20.5)", "pathspec (==0.11.1)", "platformdirs (==2.2.0)", "pyyaml (==5.1)", "pyyaml-env-tag (==0.1)", "typing-extensions (==3.10)", "watchdog (==2.0)"]
 
 [[package]]
+name = "mkdocs-callouts"
+version = "1.9.1"
+description = "A simple plugin that converts Obsidian style callouts and converts them into mkdocs supported 'admonitions' (a.k.a. callouts)."
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "mkdocs-callouts-1.9.1.tar.gz", hash = "sha256:0ab091d1bf0463c5f4f8aef66c60f4768062c37b8db374045d708d73ab41f2cd"},
+    {file = "mkdocs_callouts-1.9.1-py3-none-any.whl", hash = "sha256:a7a8bf35d7fa1a34bc675824b7a03695fed95b65cca2a72327c6074c74d776e8"},
+]
+
+[package.dependencies]
+mkdocs = ">=1"
+
+[package.extras]
+tests = ["pytest"]
+
+[[package]]
 name = "mkdocs-material"
 version = "9.4.2"
 description = "Documentation that simply works"
@@ -712,4 +729,4 @@ watchmedo = ["PyYAML (>=3.10)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "7935f272aec38753c161c79e9316be267910559ba8a1d149e9627e757d0f2607"
+content-hash = "35aea00352fea36d5c99f6e17f4b23ef04062189f1a7653d65770c9a9856adb7"

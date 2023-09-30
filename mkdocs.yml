@@ -12,9 +12,11 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
+  - pymdownx.details
   - def_list
   - pymdownx.tasklist:
       custom_checkbox: true
+  - admonition
 
 extra_javascript:
   - scripts/mathjax.js
@@ -30,3 +32,4 @@ extra_css:
 plugins:
   - search
   - roamlinks 
+  - callouts
