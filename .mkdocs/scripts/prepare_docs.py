@@ -30,6 +30,7 @@ with open(f"{PREFERENCE_DIR}/conf.yml") as conf_file:
         shutil.copytree(f"{PREFERENCE_DIR}/{theme}", theme, dirs_exist_ok=True)
 
     for doc in conf["docs"]:
+        print(f'INFO - Moving document: {doc} to {f"{DOCKS_DIR}/{doc}"}')
         shutil.copytree(doc, f"{DOCKS_DIR}/{doc}", dirs_exist_ok=True)
 
     if "files" in conf:
