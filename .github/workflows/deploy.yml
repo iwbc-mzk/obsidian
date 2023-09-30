@@ -27,6 +27,6 @@ jobs:
       - name: Init MkDocs
         run: poetry run python .mkdocs/scripts/prepare_docs.py
       - name: Build MkDocs
-        run: mkdocs build --verbose --clean
+        run: poetry run mkdocs build --verbose --clean
       - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
+        run: poetry run mkdocs gh-deploy --force
