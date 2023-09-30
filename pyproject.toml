@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "obsidian"
+version = "0.1.0"
+description = ""
+authors = ["iwbc-mzk <46069337+iwbc-mzk@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+mkdocs-material = "^9.4.2"
+mkdocs-roamlinks-plugin = "^0.3.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

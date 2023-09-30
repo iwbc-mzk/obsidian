@@ -1,0 +1,10 @@
+index: '00_Index/index.md'
+# logo: '.mkdocs/image/icon.png'
+# favicon: '.mkdocs/image/icon.png'
+# custom_theme: 'override'
+docs:
+  - 02_Daily
+  - 03_MOC
+  - 04_Article
+files:
+  - 01_Asssets
