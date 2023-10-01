@@ -1,6 +1,11 @@
-site_name: iwbc_mzk's obsidian notes
+site_name: iwbc-mzk's note
 theme: 
   name: material
+  palette:
+    primary: blue grey
+  font:
+    text: Sawarabi Mincho
+    code: Roboto Mono
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -33,3 +38,6 @@ plugins:
   - search
   - roamlinks 
   - callouts
+
+repo_url: https://github.com/iwbc-mzk/obsidian
+repo_name: iwbc-mzk/obsidian
