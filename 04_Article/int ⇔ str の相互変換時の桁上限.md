@@ -32,8 +32,7 @@ ss = int("2" * 10**4)
 print(ss)  # ok
 ```
 
-
 ## 参考
-- https://docs.python.org/3/library/stdtypes.html#integer-string-conversion-length-limitation
-- https://blog.python.org/2022/09/python-releases-3107-3914-3814-and-3714.html
-- https://stackoverflow.com/questions/73693104/valueerror-exceeds-the-limit-4300-for-integer-string-conversion
+- [Built-in Types — Python 3.11.6 documentation](https://docs.python.org/3/library/stdtypes.html#integer-string-conversion-length-limitation)
+- [Python Insider: Python releases 3.10.7, 3.9.14, 3.8.14, and 3.7.14 are now available](https://blog.python.org/2022/09/python-releases-3107-3914-3814-and-3714.html)
+- [python - ValueError: Exceeds the limit (4300) for integer string conversion - Stack Overflow](https://stackoverflow.com/questions/73693104/valueerror-exceeds-the-limit-4300-for-integer-string-conversion)

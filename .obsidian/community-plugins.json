@@ -2,5 +2,6 @@
   "obsidian-git",
   "obsidian-minimal-settings",
   "obsidian-linter",
-  "obsidian-wakatime"
+  "obsidian-wakatime",
+  "obsidian-auto-link-title"
 ]
