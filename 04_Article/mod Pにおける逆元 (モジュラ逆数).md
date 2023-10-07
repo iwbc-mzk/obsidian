@@ -45,3 +45,7 @@ def extGCD(a: int, b: int) -> tuple[int, int, int]:
 # mod 61における25の逆元は22
 extGCD(25, 61)[1] # 22
 ```
+
+## 参考
+
+- [モジュラ逆数 - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%A9%E9%80%86%E6%95%B0)
