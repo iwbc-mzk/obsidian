@@ -6,6 +6,12 @@ theme:
   font:
     text: Sawarabi Mincho
     code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.top
+    - toc.integrate
 
 markdown_extensions:
   - pymdownx.arithmatex:
@@ -26,6 +32,24 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
   - admonition
+
+extra: 
+  analytics:
+    provider: google
+    property: G-ZB3QW52MEW
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback!
 
 extra_javascript:
   - scripts/mathjax.js
