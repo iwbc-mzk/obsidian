@@ -4,9 +4,9 @@
 
 - JSON にデフォルトとして対応し、需要や必要性に応じて XML 等に対応する
 - データフォーマットの指定方法の実装
-	1. クエリパラメータ (\https://api.example.com/v1/users?format=xml)
-	2. 拡張子 (\https://api.example.com/v1/users.json)
-	3. リクエストヘッダのメディアタイプを指定 (Accept: application/json)
+	1. クエリパラメータ (`https://api.example.com/v1/users?format=xml`)
+	2. 拡張子 (`https://api.example.com/v1/users.json`)
+	3. リクエストヘッダのメディアタイプを指定 (`Accept: application/json`)
 - 基本的にはクエリパラメータで実装する
 
 ## 3.2 JSONP の取り扱い
@@ -17,7 +17,7 @@
 script タグでは src 属性に他ドメインを指定できることを利用する。
 
 1. ドメイン A でコールバック関数を用意
-2. script タグを生成しドメイン B にアクセス。この時 url パラメータでコールバック関数の名称を伝える。(\<script src="\http://domain_b/?callback=callback">\<script>)
+2. script タグを生成しドメイン B にアクセス。この時 url パラメータでコールバック関数の名称を伝える。(`<script src="http://domain_b/?callback=callback"></script>`)
 3. ドメイン B ではデータ取得等を行い、データを引数としたコールバック関数を返却する。(`callback({"id": 123, "name": "saeed"})`)
 4. ドメイン A は B から返却されたコールバック関数を実行する
 
@@ -40,7 +40,7 @@ script 要素はエラーステータスコード (400 等) が返るとスク�
 シンプルな解決法はできる限り多くのデータを返す。  
 ただこの方法ではデータ量が必要以上に大きくなりすぎる。  
 ⇒ **クエリパラメータで取得したい項目をユーザー側が自由に選択できるようにする**  
-(\http://api.example.com/v1/users/123?fields=name,age)
+(`http://api.example.com/v1/users/123?fields=name,age`)
 
 ### 3.3.2 エンベロープは必要か
 
@@ -109,4 +109,3 @@ HTTP のレスポンスヘッダで同様のことができる。むしろ HTTP 
 上記の `profile` 項目のように単にまとめるだけの階層構造はあまり意味がない。フラットに表現したほうがデータサイズが小さくなる。また `profile` 単体で処理を行うことは考えにくいため、前出のユーザーの場合のように利用者側の利便性もよくならない。
 
 ### 3.3.4 配列とフォーマット
-
