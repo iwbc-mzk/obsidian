@@ -1,0 +1,23 @@
+{
+  "autoLoadTwoHopLinks": true,
+  "showForwardConnectedLinks": false,
+  "showBackwardConnectedLinks": false,
+  "showTwohopLinks": true,
+  "showNewLinks": false,
+  "showTagsLinks": false,
+  "showPropertiesLinks": false,
+  "showImage": true,
+  "excludePaths": [
+    "05_Templates"
+  ],
+  "initialBoxCount": 10,
+  "initialSectionCount": 20,
+  "enableDuplicateRemoval": true,
+  "sortOrder": "random",
+  "showTwoHopLinksInSeparatePane": true,
+  "excludeTags": [],
+  "panePositionIsRight": true,
+  "createFilesForMultiLinked": false,
+  "frontmatterPropertyKeyAsTitle": "",
+  "frontmatterKeys": []
+}
