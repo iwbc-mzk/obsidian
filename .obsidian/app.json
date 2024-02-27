@@ -4,5 +4,7 @@
   "attachmentFolderPath": "01_Assets",
   "newFileLocation": "folder",
   "newFileFolderPath": "04_Article",
-  "userIgnoreFilters": null
+  "userIgnoreFilters": null,
+  "promptDelete": false,
+  "showInlineTitle": true
 }

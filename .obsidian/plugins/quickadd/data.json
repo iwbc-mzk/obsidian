@@ -34,6 +34,34 @@
       },
       "openFile": false,
       "openFileInMode": "default"
+    },
+    {
+      "id": "5778d8a8-6e3c-4594-91d3-e4d30d6dd9ad",
+      "name": "読書メモ_ドメイン駆動設計入門",
+      "type": "Template",
+      "command": true,
+      "templatePath": "05_Templates/読書メモ/ドメイン駆動設計入門.md",
+      "fileNameFormat": {
+        "enabled": false,
+        "format": "{{name}}.md"
+      },
+      "folder": {
+        "enabled": true,
+        "folders": [],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": true,
+        "chooseFromSubfolders": false
+      },
+      "appendLink": true,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default",
+      "fileExistsMode": "Append to the bottom of the file",
+      "setFileExistsBehavior": true
     }
   ],
   "macros": [],
@@ -41,7 +69,7 @@
   "devMode": false,
   "templateFolderPath": "",
   "announceUpdates": true,
-  "version": "1.6.1",
+  "version": "1.7.0",
   "disableOnlineFeatures": true,
   "ai": {
     "OpenAIApiKey": "",
