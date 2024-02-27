@@ -40,7 +40,7 @@
       "name": "読書メモ_ドメイン駆動設計入門",
       "type": "Template",
       "command": true,
-      "templatePath": "05_Templates/読書メモ/ドメイン駆動設計入門.md",
+      "templatePath": "05_Templates/Reading_Memo/ドメイン駆動設計入門.md",
       "fileNameFormat": {
         "enabled": false,
         "format": "{{name}}.md"
