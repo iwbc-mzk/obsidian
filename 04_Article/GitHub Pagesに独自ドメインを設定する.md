@@ -6,6 +6,15 @@
 2. Custom domain に独自ドメインを入力し、「Save」を押下する  
    ![[Pasted image 20240302143028.png]]
 
+ブランチから直接サイトを公開している場合は、自動で `CNAME` ファイルを追加するコミットが作成される。  
+カスタムのGitHub Actionsワークフローを使用してサイトを公開している場合は、自動で作成されないため手動で追加を行う。
+
+- ファイル名: CNAME
+- 記載内容: <利用したい独自ドメイン>
+
+>[!Warning]  
+> CNAME ファイルが存在しない場合、GitHub Pages のデプロイ毎に独自ドメインの設定がリセットされてしまう。
+
 ## 2. DNS にレコードを登録する
 
 ### サブドメインを利用しない場合
@@ -29,9 +38,10 @@ IPv6 を利用したい場合は AAAA レコードを作成する。
 2606:50c0:8003::153
 ```
 
-試していないので不明だが、サブドメイン利用の場合と同じようにCNAME設定でもOKかも。
+試していないので不明だが、サブドメイン利用の場合と同じように CNAME 設定でも OK かも。
 
-以下のコマンドでDNSレコードが正しく構成されたことを確認する。
+以下のコマンドで DNS レコードが正しく構成されたことを確認する。
+
 ```shell
 $ dig WWW.EXAMPLE.COM +nostats +nocomments +nocmd
 > ;WWW.EXAMPLE.COM.                    IN      A
@@ -42,8 +52,8 @@ $ dig WWW.EXAMPLE.COM +nostats +nocomments +nocmd
 
 ### サブドメインを利用する場合
 
-ホスト名に利用したいサブドメイン、指定先に`<username>.github.io` を指定したCNAMEレコードを登録する。
+ホスト名に利用したいサブドメイン、指定先に `<username>.github.io` を指定した CNAME レコードを登録する。  
 ![[Pasted image 20240302143936.png]]
 
-正しくDNSレコードが設定できたことを `dig <your domain> +nostats +nocomments +nocmd` で確認する。
+正しく DNS レコードが設定できたことを `dig <your domain> +nostats +nocomments +nocmd` で確認する。  
 ![[Pasted image 20240302144357.png]]
