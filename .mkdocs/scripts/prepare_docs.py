@@ -40,3 +40,8 @@ with open(f"{PREFERENCE_DIR}/conf.yml") as conf_file:
     if "scripts" in conf:
         for script in conf["scripts"]:
             shutil.copy(f"{PREFERENCE_DIR}/scripts/{script}", f"{DOCKS_DIR}/scripts/{os.path.basename(script)}")
+
+    if "cname" in conf:
+        cname_path = conf["cname"]
+        if os.path.exists(cname_path):
+            shutil.copy(cname_path, DOCKS_DIR)

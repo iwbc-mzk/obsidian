@@ -12,3 +12,4 @@ files:
 scripts:
   - mathjax.js
   - katex.js
+cname: '.mkdocs/CNAME'
