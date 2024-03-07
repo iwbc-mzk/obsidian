@@ -1,2 +1,5 @@
 .obsidian/workspace.json
 .venv
+/docs
+.mkdocs/site
+/mkdocs.yml
