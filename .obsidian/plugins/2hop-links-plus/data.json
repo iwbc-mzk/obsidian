@@ -1,11 +1,11 @@
 {
   "autoLoadTwoHopLinks": true,
-  "showForwardConnectedLinks": false,
-  "showBackwardConnectedLinks": false,
+  "showForwardConnectedLinks": true,
+  "showBackwardConnectedLinks": true,
   "showTwohopLinks": true,
-  "showNewLinks": false,
-  "showTagsLinks": false,
-  "showPropertiesLinks": false,
+  "showNewLinks": true,
+  "showTagsLinks": true,
+  "showPropertiesLinks": true,
   "showImage": true,
   "excludePaths": [
     "05_Templates"
@@ -17,7 +17,7 @@
   "showTwoHopLinksInSeparatePane": true,
   "excludeTags": [],
   "panePositionIsRight": true,
-  "createFilesForMultiLinked": false,
+  "createFilesForMultiLinked": true,
   "frontmatterPropertyKeyAsTitle": "",
   "frontmatterKeys": []
 }
