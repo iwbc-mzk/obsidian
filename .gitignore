@@ -3,3 +3,4 @@
 /docs
 .mkdocs/site
 /mkdocs.yml
+.obsidian/plugins/obsidian-book-search-plugin/data.json
