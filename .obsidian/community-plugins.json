@@ -13,5 +13,6 @@
   "convert-url-to-iframe",
   "obsidian-list-callouts",
   "note-refactor-obsidian",
-  "obsidian-book-search-plugin"
+  "obsidian-book-search-plugin",
+  "dataview"
 ]
