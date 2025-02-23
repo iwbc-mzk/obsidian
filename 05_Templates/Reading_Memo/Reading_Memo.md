@@ -17,7 +17,7 @@ previewLink: {{previewLink}}
 isbn10: {{isbn10}}
 isbn13: {{isbn13}}
 status: unread
-created: {{DATE:YYYY-MM-DD HH:mm:ss}}
+created: {{DATE:YYYY-MM-DD}}
 finished:
 ---
 ![cover|150]({{coverUrl}})

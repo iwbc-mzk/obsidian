@@ -14,5 +14,6 @@
   "obsidian-list-callouts",
   "note-refactor-obsidian",
   "obsidian-book-search-plugin",
-  "dataview"
+  "dataview",
+  "dataview-serializer"
 ]
