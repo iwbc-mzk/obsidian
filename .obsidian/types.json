@@ -4,6 +4,9 @@
     "cssclasses": "multitext",
     "tags": "tags",
     "section": "number",
-    "chapter": "number"
+    "chapter": "number",
+    "created": "date",
+    "description": "text",
+    "finished": "date"
   }
 }

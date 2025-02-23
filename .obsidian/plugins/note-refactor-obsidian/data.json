@@ -1,13 +1,13 @@
 {
   "includeFirstLineAsNoteHeading": false,
-  "excludeFirstLineInNote": false,
+  "excludeFirstLineInNote": true,
   "openNewNote": true,
   "headingFormat": "#",
   "newFileLocation": 1,
   "customFolder": "",
   "fileNamePrefix": "",
-  "transcludeByDefault": false,
+  "transcludeByDefault": true,
   "noteLinkTemplate": "",
-  "refactoredNoteTemplate": "",
-  "normalizeHeaderLevels": false
+  "refactoredNoteTemplate": "---\ntags: \"{{title}}\"\nlink: \"{{link}}\"\n---\n{{new_note_content}}",
+  "normalizeHeaderLevels": true
 }
