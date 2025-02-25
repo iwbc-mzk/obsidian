@@ -1,8 +1,6 @@
-.obsidian/workspace.json
 .venv
-/docs
 .mkdocs/site
 .mkdocs/docs
-/mkdocs.yml
+.obsidian/workspace.json
+# data.jsonにBookSearchプラグインで利用しているAPIキーが記載されるため管理から外す
 .obsidian/plugins/obsidian-book-search-plugin/data.json
-site
