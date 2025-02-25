@@ -1,6 +1,9 @@
-- [[競技プログラミング]]
+<!-- QueryToSerialize: LIST FROM "03_MOC" SORT file.title ASC -->
+<!-- SerializedQuery: LIST FROM "03_MOC" SORT file.title ASC -->
 - [[IT]]
 - [[Python]]
-- [[セキュリティ]]
-- [[読書メモ]]
 - [[その他]]
+- [[セキュリティ]]
+- [[競技プログラミング]]
+- [[読書メモ]]
+<!-- SerializedQuery END -->

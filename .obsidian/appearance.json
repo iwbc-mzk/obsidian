@@ -1,6 +1,8 @@
 {
   "accentColor": "",
-  "textFontFamily": "メイリオ",
+  "textFontFamily": "源ノ角ゴシック Code JP,BIZ UDゴシック,メイリオ",
   "cssTheme": "Minimal",
-  "theme": "obsidian"
+  "theme": "obsidian",
+  "monospaceFontFamily": "源ノ角ゴシック Code JP",
+  "interfaceFontFamily": "メイリオ"
 }

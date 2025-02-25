@@ -15,5 +15,6 @@
   "note-refactor-obsidian",
   "obsidian-book-search-plugin",
   "dataview",
-  "dataview-serializer"
+  "dataview-serializer",
+  "obsidian-memos"
 ]
