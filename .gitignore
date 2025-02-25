@@ -2,6 +2,7 @@
 .venv
 /docs
 .mkdocs/site
+.mkdocs/docs
 /mkdocs.yml
 .obsidian/plugins/obsidian-book-search-plugin/data.json
 site

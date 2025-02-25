@@ -3,10 +3,10 @@ index: '00_Index/index.md'
 # favicon: '.mkdocs/image/icon.png'
 # custom_theme: 'override'
 docs:
-  - 02_Daily
-  - 03_MOC
-  - 04_Article
-  - 06_Reading_Memo
+  02_Daily: Daily
+  03_MOC: Moc
+  04_Article: Article
+  06_ReadingNotes: ReadingNotes
 files:
   - 01_Assets
 scripts:
