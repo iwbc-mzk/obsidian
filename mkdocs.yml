@@ -1,0 +1,72 @@
+site_name: iwbc-mzk's note
+site_url: https://obsidian.bibliophage.jp
+theme: 
+  name: material
+  palette:
+    primary: blue grey
+  font:
+    text: Sawarabi Mincho
+    code: Roboto Mono
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.path
+    - navigation.top
+    - toc.integrate
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.details
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - admonition
+
+extra: 
+  analytics:
+    provider: google
+    property: G-ZB3QW52MEW
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/emoticon-happy-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/emoticon-sad-outline
+          name: This page could be improved
+          data: 0
+          note: >- 
+            Thanks for your feedback!
+
+extra_javascript:
+  - scripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - scripts/katex.js 
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js  
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js
+
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css
+
+plugins:
+  - search
+  - roamlinks 
+  - callouts
+
+repo_url: https://github.com/iwbc-mzk/obsidian
+repo_name: iwbc-mzk/obsidian

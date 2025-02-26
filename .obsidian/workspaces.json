@@ -1,0 +1,289 @@
+{
+  "workspaces": {
+    "main": {
+      "main": {
+        "id": "92d4302ca006d019",
+        "type": "split",
+        "children": [
+          {
+            "id": "c939c46e7ea548d6",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "b63e55c3418b6111",
+                "type": "leaf",
+                "state": {
+                  "type": "empty",
+                  "state": {},
+                  "icon": "lucide-file",
+                  "title": "新規タブ"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical"
+      },
+      "left": {
+        "id": "f40c681c370aa7c0",
+        "type": "split",
+        "children": [
+          {
+            "id": "85dd47d139e8b325",
+            "type": "tabs",
+            "dimension": 62.41660489251297,
+            "children": [
+              {
+                "id": "b753340f3cce54ac",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {
+                    "sortOrder": "alphabetical",
+                    "autoReveal": false
+                  },
+                  "icon": "lucide-folder-closed",
+                  "title": "ファイルエクスプローラ"
+                }
+              },
+              {
+                "id": "f975537fff46aa0d",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  },
+                  "icon": "lucide-search",
+                  "title": "検索"
+                }
+              },
+              {
+                "id": "11961dcd18be6441",
+                "type": "leaf",
+                "state": {
+                  "type": "bookmarks",
+                  "state": {},
+                  "icon": "lucide-bookmark",
+                  "title": "ブックマーク"
+                }
+              }
+            ]
+          },
+          {
+            "id": "5488bf40c0a458a0",
+            "type": "tabs",
+            "dimension": 37.58339510748703,
+            "children": [
+              {
+                "id": "ae3f833c7b4cf349",
+                "type": "leaf",
+                "state": {
+                  "type": "localgraph",
+                  "state": {
+                    "options": {
+                      "collapse-filter": true,
+                      "search": "",
+                      "localJumps": 1,
+                      "localBacklinks": true,
+                      "localForelinks": true,
+                      "localInterlinks": false,
+                      "showTags": false,
+                      "showAttachments": false,
+                      "hideUnresolved": false,
+                      "collapse-color-groups": true,
+                      "colorGroups": [],
+                      "collapse-display": true,
+                      "showArrow": false,
+                      "textFadeMultiplier": 0,
+                      "nodeSizeMultiplier": 1,
+                      "lineSizeMultiplier": 1,
+                      "collapse-forces": true,
+                      "centerStrength": 0.518713248970312,
+                      "repelStrength": 10,
+                      "linkStrength": 1,
+                      "linkDistance": 250,
+                      "scale": 0.30647883944649373,
+                      "close": true
+                    }
+                  },
+                  "icon": "lucide-git-fork",
+                  "title": "グラフビュー"
+                }
+              },
+              {
+                "id": "183cac869b06ff8e",
+                "type": "leaf",
+                "state": {
+                  "type": "thino_view",
+                  "state": {},
+                  "icon": "Memos",
+                  "title": "Thino"
+                }
+              }
+            ],
+            "currentTab": 1
+          }
+        ],
+        "direction": "horizontal",
+        "width": 358.5
+      },
+      "right": {
+        "id": "8a21722b4fe93d25",
+        "type": "split",
+        "children": [
+          {
+            "id": "29938d16cba60b35",
+            "type": "tabs",
+            "dimension": 71.4080459770115,
+            "children": [
+              {
+                "id": "40331a5ad9c6804d",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": false
+                  },
+                  "icon": "links-coming-in",
+                  "title": "バックリンク"
+                }
+              },
+              {
+                "id": "f4a39ee5aa9f5132",
+                "type": "leaf",
+                "state": {
+                  "type": "outgoing-link",
+                  "state": {
+                    "linksCollapsed": false,
+                    "unlinkedCollapsed": false
+                  },
+                  "icon": "links-going-out",
+                  "title": "アウトゴーイングリンク"
+                }
+              },
+              {
+                "id": "0666f9bf9afdd3ee",
+                "type": "leaf",
+                "state": {
+                  "type": "tag",
+                  "state": {
+                    "sortOrder": "frequency",
+                    "useHierarchy": true
+                  },
+                  "icon": "lucide-tags",
+                  "title": "タグ"
+                }
+              },
+              {
+                "id": "8eb3f96b38ee658a",
+                "type": "leaf",
+                "state": {
+                  "type": "outline",
+                  "state": {
+                    "file": "00_Index/index.md"
+                  },
+                  "icon": "lucide-list",
+                  "title": "indexのアウトライン"
+                }
+              },
+              {
+                "id": "47fa44e228dc9ef0",
+                "type": "leaf",
+                "state": {
+                  "type": "git-view",
+                  "state": {},
+                  "icon": "git-pull-request",
+                  "title": "Source Control"
+                }
+              },
+              {
+                "id": "a0c5c566cf187d3c",
+                "type": "leaf",
+                "state": {
+                  "type": "all-properties",
+                  "state": {
+                    "sortOrder": "frequency",
+                    "showSearch": false,
+                    "searchQuery": ""
+                  },
+                  "icon": "lucide-archive",
+                  "title": "すべてのプロパティ"
+                }
+              },
+              {
+                "id": "089743f24c033156",
+                "type": "leaf",
+                "state": {
+                  "type": "advanced-tables-toolbar",
+                  "state": {},
+                  "icon": "lucide-file",
+                  "title": "Plugin no longer active"
+                }
+              },
+              {
+                "id": "72ce2421a04e1d5a",
+                "type": "leaf",
+                "state": {
+                  "type": "TwoHopLinksView",
+                  "state": {},
+                  "icon": "lucide-file",
+                  "title": "Plugin no longer active"
+                }
+              }
+            ]
+          },
+          {
+            "id": "be90699c44cd3b60",
+            "type": "tabs",
+            "dimension": 28.59195402298851,
+            "children": [
+              {
+                "id": "d249f0edf875e35f",
+                "type": "leaf",
+                "state": {
+                  "type": "calendar",
+                  "state": {},
+                  "icon": "calendar-with-checkmark",
+                  "title": "Calendar"
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 675.5
+      },
+      "left-ribbon": {
+        "hiddenItems": {
+          "switcher:クイックスイッチャーを開く": false,
+          "graph:グラフビューを開く": false,
+          "canvas:新規キャンバスを作成": false,
+          "daily-notes:今日のデイリーノートを開く": false,
+          "templates:テンプレートを挿入": false,
+          "command-palette:コマンドパレットを開く": false,
+          "markdown-importer:Markdownインポーターを開く": false,
+          "table-editor-obsidian:Advanced Tables Toolbar": false,
+          "obsidian-book-search-plugin:Create new book note": false,
+          "obsidian-memos:Thino": false,
+          "random-note:ランダムノートを開く": false,
+          "workspaces:ワークスペースレイアウトを管理": false
+        }
+      },
+      "active": "b63e55c3418b6111",
+      "mtime": "2025-02-26T20:48:13+09:00"
+    }
+  },
+  "active": "main"
+}

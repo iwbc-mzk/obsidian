@@ -4,18 +4,26 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
+        {
+            "type": "PowerShell",
+            "name": "Debug MKDocs",
+            "request": "launch",
+            "script": "poetry run python .mkdocs/scripts/prepare_docs.py --local; cd .mkdocs; poetry run mkdocs serve --clean --open",
+            "cwd": "${workspaceFolder}"
+        },
         {
             "type": "PowerShell",
             "name": "Prepare Docs",
             "request": "launch",
-            "script": "poetry run python .mkdocs/scripts/prepare_docs.py --local"
+            "script": "poetry run python .mkdocs/scripts/prepare_docs.py --local",
+            "cwd": "${workspaceFolder}"
         },
         {
             "type": "PowerShell",
             "name": "Build MKDocs",
             "request": "launch",
-            "script": "cd .mkdocs; poetry run mkdocs build -d site --verbose --clean; cd .."
+            "script": "cd .mkdocs; poetry run mkdocs build -d site --verbose --clean; cd ..",
+            "cwd": "${workspaceFolder}"
         }
     ]
 }
