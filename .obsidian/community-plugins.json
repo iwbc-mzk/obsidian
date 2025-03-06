@@ -16,5 +16,8 @@
   "obsidian-book-search-plugin",
   "dataview",
   "dataview-serializer",
-  "obsidian-memos"
+  "obsidian-memos",
+  "templater-obsidian",
+  "tag-wrangler",
+  "update-time-on-edit"
 ]

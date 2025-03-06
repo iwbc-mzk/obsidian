@@ -1,0 +1,18 @@
+{
+  "dateFormat": "yyyy-MM-dd E HH:mm",
+  "enableCreateTime": true,
+  "headerUpdated": "updated",
+  "headerCreated": "created",
+  "minMinutesBetweenSaves": 1,
+  "ignoreGlobalFolder": [
+    "05_Templates",
+    "01_Assets",
+    "00_Index",
+    "03_MOC"
+  ],
+  "ignoreCreatedFolder": [],
+  "enableExperimentalHash": false,
+  "fileHashMap": {
+    "06_ReadingNotes/オブジェクト指向設計実践ガイド/オブジェクト指向設計実践ガイド.md": "ef1b8f586ce328766c1ab5d47246f43a5071fdb330cb559f1d8617cd163cdb22"
+  }
+}
