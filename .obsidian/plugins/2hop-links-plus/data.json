@@ -4,9 +4,9 @@
   "showBackwardConnectedLinks": true,
   "showTwohopLinks": true,
   "showNewLinks": true,
-  "showTagsLinks": true,
-  "showPropertiesLinks": true,
-  "showImage": true,
+  "showTagsLinks": false,
+  "showPropertiesLinks": false,
+  "showImage": false,
   "excludePaths": [
     "05_Templates"
   ],

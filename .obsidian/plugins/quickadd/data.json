@@ -40,16 +40,18 @@
       "name": "読書メモ_ドメイン駆動設計入門",
       "type": "Template",
       "command": true,
-      "templatePath": "05_Templates/Reading_Memo/ドメイン駆動設計入門.md",
+      "templatePath": "05_Templates/ReadingNotes/ドメイン駆動設計入門.md",
       "fileNameFormat": {
         "enabled": false,
         "format": "{{name}}.md"
       },
       "folder": {
         "enabled": true,
-        "folders": [],
+        "folders": [
+          "06_ReadingNotes/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本"
+        ],
         "chooseWhenCreatingNote": false,
-        "createInSameFolderAsActiveFile": true,
+        "createInSameFolderAsActiveFile": false,
         "chooseFromSubfolders": false
       },
       "appendLink": true,

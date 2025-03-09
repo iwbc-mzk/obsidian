@@ -7,6 +7,8 @@
     "chapter": "number",
     "created": "date",
     "description": "text",
-    "finished": "date"
+    "finished": "date",
+    "categories": "multitext",
+    "isbn13": "number"
   }
 }
