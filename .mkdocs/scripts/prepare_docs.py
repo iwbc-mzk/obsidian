@@ -2,10 +2,14 @@ import yaml
 import shutil
 import os
 import argparse
+import glob
+import re
+from pathlib import Path
 
 
 PREFERENCE_DIR = ".mkdocs"
 DOCKS_DIR = "docs"
+FILE_DIR = "Assets"
 
 
 def main(output_dir: str):
@@ -16,7 +20,7 @@ def main(output_dir: str):
     os.makedirs(f"{output_dir}/scripts", exist_ok=True)
 
     with open(f"{PREFERENCE_DIR}/conf.yml") as conf_file:
-        conf = yaml.safe_load(conf_file)
+        conf: dict = yaml.safe_load(conf_file)
         shutil.copy(f"{PREFERENCE_DIR}/mkdocs.yml", "./")
 
         if "index" in conf:
@@ -35,13 +39,40 @@ def main(output_dir: str):
             theme = conf["custom_theme"]
             shutil.copytree(f"{PREFERENCE_DIR}/{theme}", theme, dirs_exist_ok=True)
 
-        docs = conf["docs"]
-        for from_, to_ in docs.items():
-            shutil.copytree(from_, f"{output_dir}/{to_}", dirs_exist_ok=True)
-
         if "files" in conf:
             for file in conf["files"]:
-                shutil.copytree(file, f"{output_dir}/{os.path.basename(file)}")
+                shutil.copytree(
+                    file,
+                    f"{output_dir}/{FILE_DIR}",
+                    dirs_exist_ok=True,
+                )
+
+        # Obsidian形式の埋め込みリンクの修正のために、filesの後に実行する必要あり
+        # todo: ![[Pasted image 20231022222101.png|300]]のように埋め込み画像のサイズを指定している箇所も修正されているので直す必要あり
+        assets_embedded_links: set = set(
+            map(
+                lambda x: f"![[{os.path.basename(x)}]]",
+                glob.glob(f"{output_dir}/{FILE_DIR}/*"),
+            )
+        )
+        docs: dict = conf["docs"]
+        pattern = r"\!\[\[.*]]"
+        for from_, to_ in docs.items():
+            output_path = f"{output_dir}/{to_}"
+            shutil.copytree(from_, output_path, dirs_exist_ok=True)
+
+            markdowns = glob.glob(f"{output_path}/*.md", recursive=True)
+            for md in markdowns:
+                md_path = Path(md)
+                content = md_path.read_text(encoding="utf-8")
+
+                contents_embedded_links: set[str] = set(re.findall(pattern, content))
+                doc_embedded_links = contents_embedded_links.difference(
+                    assets_embedded_links
+                )
+                for embedded_link in doc_embedded_links:
+                    content = content.replace(embedded_link, embedded_link[1:])
+                md_path.write_text(content, encoding="utf-8")
 
         if "scripts" in conf:
             for script in conf["scripts"]:
