@@ -75,7 +75,6 @@ def main(output_dir: str):
                         # 画像サイズ指定ありだとmkdocsでhtmlにしたときにサイズが反映されない、かつ文字列として{with="300"}のように表示されてしまう
                         # そのためサイズ指定を取り除く
                         idx = embedded_link.rfind("|")
-                        print(idx)
                         content = content.replace(
                             embedded_link, f"{embedded_link[:idx]}]]"
                         )

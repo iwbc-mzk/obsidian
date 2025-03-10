@@ -5,8 +5,8 @@ theme:
   palette:
     primary: blue grey
   font:
-    text: Sawarabi Mincho
-    code: Roboto Mono
+    text: BIZ UDPGothic
+    code: Source Code Pro
   features:
     - navigation.tabs
     - navigation.tabs.sticky
