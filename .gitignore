@@ -5,4 +5,4 @@
 # data.jsonにBookSearchプラグインで利用しているAPIキーが記載されるため管理から外す
 .obsidian/plugins/obsidian-book-search-plugin/data.json
 .tmp.*
-mkdocs
+mkdocs.yml
