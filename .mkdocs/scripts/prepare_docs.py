@@ -48,7 +48,6 @@ def main(output_dir: str):
                 )
 
         # Obsidian形式の埋め込みリンクの修正のために、filesの後に実行する必要あり
-        # todo: ![[Pasted image 20231022222101.png|300]]のように埋め込み画像のサイズを指定している箇所も修正されているので直す必要あり
         assets_embedded_links: set = set(
             map(
                 lambda x: f"![[{os.path.basename(x)}]]",
@@ -70,8 +69,20 @@ def main(output_dir: str):
                 doc_embedded_links = contents_embedded_links.difference(
                     assets_embedded_links
                 )
+                image_with_size_pattern = r"!\[\[.*\|[0-9]+x?[0-9]*]]"
                 for embedded_link in doc_embedded_links:
-                    content = content.replace(embedded_link, embedded_link[1:])
+                    if re.search(image_with_size_pattern, embedded_link):
+                        # 画像サイズ指定ありだとmkdocsでhtmlにしたときにサイズが反映されない、かつ文字列として{with="300"}のように表示されてしまう
+                        # そのためサイズ指定を取り除く
+                        idx = embedded_link.rfind("|")
+                        print(idx)
+                        content = content.replace(
+                            embedded_link, f"{embedded_link[:idx]}]]"
+                        )
+                    else:
+                        # 埋め込みリンクの!を削除
+                        content = content.replace(embedded_link, embedded_link[1:])
+
                 md_path.write_text(content, encoding="utf-8")
 
         if "scripts" in conf:
