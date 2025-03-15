@@ -19,5 +19,6 @@
   "obsidian-memos",
   "templater-obsidian",
   "tag-wrangler",
-  "update-time-on-edit"
+  "update-time-on-edit",
+  "editing-toolbar"
 ]
