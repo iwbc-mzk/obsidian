@@ -20,5 +20,6 @@
   "templater-obsidian",
   "tag-wrangler",
   "update-time-on-edit",
-  "editing-toolbar"
+  "editing-toolbar",
+  "find-unlinked-files"
 ]
