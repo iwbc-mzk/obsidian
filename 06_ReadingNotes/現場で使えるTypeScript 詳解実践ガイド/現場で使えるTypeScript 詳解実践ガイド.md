@@ -21,7 +21,7 @@ isbn10:
 isbn13: PKEY:BT000155409800100101900209
 status: unread
 created: 2025-03-27
-updated: 2025-03-28 Fri 14:41
+updated: 2025-03-28 Fri 21:28
 finished: 
 ---
 ![cover|150](http://books.google.com/books/content?id=l2j-EAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)
@@ -43,3 +43,4 @@ ECMAScriptでJavaScriptに実装検討中の機能も先行して実装された
 - 静的型付けシステムがない
 - モジュールシステムがない
   (TypeScript登場当時？現在はモジュールシステムが実装されている)
+
