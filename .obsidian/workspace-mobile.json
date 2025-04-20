@@ -113,7 +113,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "06_ReadingNotes/現場で使えるTypeScript 詳解実践ガイド/現場で使えるTypeScript 詳解実践ガイド.md",
+            "file": "06_ReadingNotes/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本 - 成瀬允宣.md",
             "collapseAll": true,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -187,9 +187,10 @@
   },
   "active": "c55602ff16875b57",
   "lastOpenFiles": [
-    "06_ReadingNotes/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本 - 成瀬允宣.md",
-    "06_ReadingNotes/オブジェクト指向設計実践ガイド/オブジェクト指向設計実践ガイド.md",
     "06_ReadingNotes/現場で使えるTypeScript 詳解実践ガイド/現場で使えるTypeScript 詳解実践ガイド.md",
+    "06_ReadingNotes/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本 - 成瀬允宣.md",
+    "04_Article/テスト.md",
+    "06_ReadingNotes/オブジェクト指向設計実践ガイド/オブジェクト指向設計実践ガイド.md",
     "04_Article/決定木.md"
   ]
 }
