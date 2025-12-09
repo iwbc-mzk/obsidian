@@ -15,12 +15,12 @@ totalPage: 346
 coverUrl: http://books.google.com/books/content?id=1f9lDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api
 description: 書いているコードが変わらないのだから、どんな種類のシステムでもソフトウェアアーキテクチャのルールは同じ。ソフトウェアアーキテクチャのルールとは、プログラムの構成要素をどのように組み立てるかのルールである。構成要素は普遍的で変わらないのだから、それらを組み立てるルールもまた、普遍的で変わらないのである。（本書「序文」より）
 link: https://play.google.com/store/books/details?id=1f9lDwAAQBAJ
-isbn10: 
+isbn10:
 isbn13: PKEY:04893065A08153900000
 status: unread
 created: 2025-03-09
-updated: 2025-03-09 Sun 23:31
-finished: 
+updated: 2025-09-11 Thu 23:39
+finished:
 ---
 ![cover|150](http://books.google.com/books/content?id=1f9lDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)
 

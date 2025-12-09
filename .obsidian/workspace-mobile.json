@@ -13,13 +13,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "06_ReadingNotes/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本 - 成瀬允宣.md",
+                "file": "03_MOC/Go.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本 - 成瀬允宣"
+              "title": "Go"
             }
           }
         ]
@@ -170,6 +170,8 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-git:Open Git source control": false,
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -187,8 +189,8 @@
   },
   "active": "c55602ff16875b57",
   "lastOpenFiles": [
-    "06_ReadingNotes/現場で使えるTypeScript 詳解実践ガイド/現場で使えるTypeScript 詳解実践ガイド.md",
     "06_ReadingNotes/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本/ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本 - 成瀬允宣.md",
+    "06_ReadingNotes/現場で使えるTypeScript 詳解実践ガイド/現場で使えるTypeScript 詳解実践ガイド.md",
     "04_Article/テスト.md",
     "06_ReadingNotes/オブジェクト指向設計実践ガイド/オブジェクト指向設計実践ガイド.md",
     "04_Article/決定木.md"
