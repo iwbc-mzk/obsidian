@@ -5,7 +5,7 @@ index: '00_Index/index.md'
 docs:
   02_Daily: Daily
   03_MOC: Moc
-  04_Article: Article
+  04_Articles: Article
   06_ReadingNotes: ReadingNotes
 files:
   - 01_Assets
