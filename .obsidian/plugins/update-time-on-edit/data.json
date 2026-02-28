@@ -42,8 +42,7 @@
     "02_Daily/2025-06-04.md": "f4ef54c69f13d1f9be258bc21ed055bc0b7aafb7f6661e7d0f73124e3cf6f724",
     "02_Daily/2025-06-08.md": "f476c80a5c33197d0466b44fc973feda0b2010d437ae5b1533b2bdfe9b708591",
     "02_Daily/2025-09-22.md": "ab4b2b4233d92f0d8fd0481a0b69f9011d869328771c3e849724a2647f0fe403",
-    "Clippings/よくわからずにClaudeのSkillを使い倒し始めたら、自分の仕事が丸裸になりつつある話.md": "819b43b512876f25dddecb4b988f3b2c50c29f6c01dbd15adbf743e3482e060b",
-    "CLAUDE.md": "4df94b50f52796a8804de4be2d6069c8e84f56c3b32ef35313b9602832fad4ab",
+    "CLAUDE.md": "fb8ffceb947384830eec666c94cc9c8b97b0d7b6a42f0d225b83658f50cc3cb9",
     "04_Articles/01-BFS.md": "a625c7440d25cc39c0109fcb6eb7e6efc01c177c81653fa1d895f3fcaedf7fdb",
     "04_Articles/2項係数nCkを素数Pで割った余りの計算.md": "1f943360e174eada75fce667bb4ef0b67d19b7785024d4cf8f81c023dbc1b1af",
     "04_Articles/Functional Graph.md": "bc7974874b87230238c0e3e7db91d3f37fe4dd4a65c5b37b0085dc05e570252d",
@@ -92,10 +91,9 @@
     "04_Articles/行きがけ順・帰りがけ順.md": "efddf0f2093309a5e5e10d30c57c3afa643fbbba9658a361cc2c5f09ed5bd3b8",
     "04_Articles/調和級数的計算量.md": "663bababad9fd4a401559d2cb9ad49c6359a74a8ee71ead76c4d8d7a20d91924",
     "04_Articles/CalibreでKindleをPDF化する方法 2025.md": "2a2fd2417ac79c5897ccde3fc40fd00bd22563d07c1bb4dd246d39295ac9c5e4",
-    "Clippings/Obsidian Web Clipper × Claude Codeで技術記事の自動整理をしてみた  DevelopersIO.md": "6839a14b17a9dc7ce1f4691c4eafe44d68f4a4d48d85cfb5601fd48026c1b5b5",
-    "Clippings/【Obsidian】Terminalで別ウィンドウ画面が開く問題の公式推奨解決策【Windows】.md": "09b1859bd9ea61f4113d190a52786477593da64aa5b1166ce40c844c4f26bba9",
-    "Clippings copy/Obsidian Web Clipper × Claude Codeで技術記事の自動整理をしてみた  DevelopersIO.md": "07d02667703e96e66850306d8c607b7bc98e9fbad36b57b0ff60c5aedb7b82cd",
-    "Clippings copy/よくわからずにClaudeのSkillを使い倒し始めたら、自分の仕事が丸裸になりつつある話.md": "f5fdbefd12d9d414ad6f8115916771c4073ddc744329de9b34b6bbf4ba092eb9",
-    "Clippings copy/【Obsidian】Terminalで別ウィンドウ画面が開く問題の公式推奨解決策【Windows】.md": "09b1859bd9ea61f4113d190a52786477593da64aa5b1166ce40c844c4f26bba9"
+    "04_Articles/Claude Codeの三つの要素 - Skill・Agent・MCPの役割分担.md": "5599861ee30182c26da33013151ba4f1137340084e99914a3f55c49030848e36",
+    "04_Articles/業務の繰り返しパターンをClaude Code Skillで可視化・自動化する.md": "04ade77b752018a413358ebb26e5d78e4d68b103847245c8584139df7a7a9f4e",
+    "04_Articles/ObsidianのTerminalプラグインでWindowsで別ウィンドウが開く問題の解決策.md": "73c2a2a8da9920abdc0fb95b99070776b2879684ee798b61a9f722b3a0940c94",
+    "04_Articles/Obsidian Web ClipperとClaude Code Skillで技術記事を自動整理する.md": "89212708fb2fa8cd92765bcf14d9d1111c0e0470bd7fa625d738a763cbde433a"
   }
 }
