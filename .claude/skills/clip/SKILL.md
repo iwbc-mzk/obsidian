@@ -70,9 +70,9 @@ Obsidian Web Clipperで保存されたMarkdown記事を読み取り、
 - GCP → `IAM`, `CloudRun`, `GKE`, `BigQuery` 等
 - Terraform → `Basics`, `Modules`, `State` 等
 
-<!-- ### 4. Clip記事の削除
+### 4. Clip記事の削除
 
-整理が完了したら、入力元フォルダ内の元のmdファイルを削除する。 -->
+整理が完了したら、入力元フォルダ内の元のmdファイルを削除する。
 
 ### 5. 処理結果レポート
 
