@@ -1,6 +1,6 @@
 ---
 created: 2026-02-28 Sat 10:45
-updated: 2026-02-28 Sat 10:46
+updated: 2026-02-28 Sat 11:58
 ---
 # CLAUDE.md
 
@@ -73,3 +73,6 @@ Commits are vault backups with the format `vault backup: YYYY-MM-DD HH:MM:SS`. T
 - Content focuses on: competitive programming algorithms, Python, security, software design patterns, reading notes
 - Math rendering uses both MathJax and KaTeX (both are configured)
 - Mermaid diagrams are supported in published articles
+
+### 改行コード
+編集時は必ずCRLF形式の改行を利用する
