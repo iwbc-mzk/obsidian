@@ -42,7 +42,9 @@ Obsidian Web Clipperで保存されたMarkdown記事を読み取り、
 - ファイルはテンプレート（`./05_Template/Article.md`）に基づいて作成する
 - 各種メタデータ（タイトル、タグ、カテゴリ、サブカテゴリなど）を適切に反映させる（タグには空白を使用しない）
 - 各記事には元ファイルのSourceタグのURLを以下に基づいて記載する
-  - URLのドメインが`gemini.google.com`の場合は、URLを記載せず「`引用元: Gemini`」と記載する
+  - URLのドメインが以下の場合は、URLを記載せず「`引用元: サービス名`」（例： `引用元: NotebookLM`）と記載する
+    - `notebooklm.google.com`
+    - `gemini.google.com`
   - URLがない場合は記載しない
   - 記事本文の最後に「`引用元: [元記事タイトル](URL)`」の形式で記載する(例: `引用元: [引用元記事タイトル](https://example.com/article)`)
   - Sourceタグにも元ファイルのSourceタグのURLを記載する

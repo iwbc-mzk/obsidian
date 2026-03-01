@@ -101,6 +101,13 @@
     "04_Articles/複数年契約の保険料を確定申告で期間按分する方法.md": "5edd42bbada8fa7d950d713ce008755b4bc5cfa656c8f0d83ae868b46abc6bbb",
     "04_Articles/Markdownの参照スタイルリンク記法.md": "d802016717a572420bbff06e87ce1b9c8362be48754f7958b3f51dc88016b2a0",
     "04_Articles/量子力学における不確定性原理.md": "818ee22a00b0e4fb47361936ef767abba01e0c5b41c488bb6cf7d86ddf8df91c",
-    "04_Articles/不確定性原理と観測者効果の違い.md": "e869f378a7d1db817e8161d29606d1a6cffe980bc4f640ef7a4a831ec78cb572"
+    "04_Articles/不確定性原理と観測者効果の違い.md": "e869f378a7d1db817e8161d29606d1a6cffe980bc4f640ef7a4a831ec78cb572",
+    "04_Articles/パスキーの認証の仕組み.md": "8f005d13a16ac0e4d0ac4ff452a9b66f4e9543a3abbbfc5f4b22e5643e72aa81",
+    "04_Articles/同期型・デバイス固定型パスキーの比較.md": "29889928de6532554cb27c4f0df910c603bff9ab12b83008d4bbb642f66b338d",
+    "04_Articles/パスキーとパスワードの決定的な違い.md": "8f24dc8d4fd4424948dffdc3072c86f2433b207e265329cf02f98b605447a562",
+    "04_Articles/パスキーのフィッシング耐性とドメインバインディング.md": "61b2592bc4802ac04a8d2ec234558be5af264aadcc912cb2a65624f040adbcf2",
+    "04_Articles/パスキー紛失・盗難時の対応と復旧方法.md": "e7ba2ed74386533521b7cc182fe4c8eb633154fc8685b6afab8cd905cacff949",
+    "04_Articles/FIDO2・WebAuthn・CTAPとパスキーの関係.md": "99e2c0e7f75d7261a249214628754625d99cf082788aaea68940becdf5bd8a07",
+    "04_Articles/公開鍵暗号の一方向性と量子コンピュータへの耐性.md": "0ae798f6c56beaa835ef1a3d62d8804fe3b7d24d89424654b266254c3c5299e5"
   }
 }
