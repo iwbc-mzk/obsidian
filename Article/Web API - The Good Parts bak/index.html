@@ -1,0 +1,5768 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://obsidian.bibliophage.jp/Article/Web%20API%20-%20The%20Good%20Parts%20bak/">
+      
+      
+        <link rel="prev" href="../Visual%20Studio%20Code%E3%81%AElaunch.json%E3%81%A7PowerShell%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/">
+      
+      
+        <link rel="next" href="../freee%E3%81%A7%E5%80%8B%E4%BA%BA%E7%94%A8%E3%82%AB%E3%83%BC%E3%83%89%E6%89%95%E3%81%84%E3%83%BB%E5%AE%B6%E4%BA%8B%E6%8C%89%E5%88%86%E3%81%AE%E7%B5%8C%E8%B2%BB%E3%82%92%E5%85%A5%E5%8A%9B%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
+    
+    
+      
+        <title>3 章 レスポンスデータの設計 - iwbc-mzk's note</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=BIZ+UDPGothic:300,300i,400,400i,700,700i%7CSource+Code+Pro:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"BIZ UDPGothic";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-ZB3QW52MEW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-ZB3QW52MEW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-ZB3QW52MEW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#3" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="iwbc-mzk&#39;s note" class="md-header__button md-logo" aria-label="iwbc-mzk's note" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            iwbc-mzk's note
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              3 章 レスポンスデータの設計
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/iwbc-mzk/obsidian" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    iwbc-mzk/obsidian
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../01-BFS/" class="md-tabs__link">
+          
+  
+  Article
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Daily/2022-01-23/" class="md-tabs__link">
+          
+  
+  Daily
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../Moc/ClaudeCode/" class="md-tabs__link">
+          
+  
+  Moc
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ReadingNotes/Clean%20Architecture%20%E9%81%94%E4%BA%BA%E3%81%AB%E5%AD%A6%E3%81%B6%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E8%A8%AD%E8%A8%88/Clean%20Architecture%20%E9%81%94%E4%BA%BA%E3%81%AB%E5%AD%A6%E3%81%B6%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E8%A8%AD%E8%A8%88/" class="md-tabs__link">
+          
+  
+  ReadingNotes
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="iwbc-mzk&#39;s note" class="md-nav__button md-logo" aria-label="iwbc-mzk's note" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    iwbc-mzk's note
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/iwbc-mzk/obsidian" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    iwbc-mzk/obsidian
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Article
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Article
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-BFS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 BFS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2%E9%A0%85%E4%BF%82%E6%95%B0nCk%E3%82%92%E7%B4%A0%E6%95%B0P%E3%81%A7%E5%89%B2%E3%81%A3%E3%81%9F%E4%BD%99%E3%82%8A%E3%81%AE%E8%A8%88%E7%AE%97/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2項係数nCkを素数Pで割った余りの計算
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Calibre%E3%81%A7Kindle%E3%82%92PDF%E5%8C%96%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%202025/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CalibreでKindleをPDF化する方法 2025
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Claude%20Code%E3%81%AE%E4%B8%89%E3%81%A4%E3%81%AE%E8%A6%81%E7%B4%A0%20-%20Skill%E3%83%BBAgent%E3%83%BBMCP%E3%81%AE%E5%BD%B9%E5%89%B2%E5%88%86%E6%8B%85/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Claude Codeの三つの要素 - Skill・Agent・MCPの役割分担
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Functional%20Graph/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional Graph
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../GitHub%20Pages%E3%81%AB%E7%8B%AC%E8%87%AA%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub Pagesに独自ドメインを設定する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../JSON%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    JSONインジェクション
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Markdown%E3%81%AE%E5%8F%82%E7%85%A7%E3%82%B9%E3%82%BF%E3%82%A4%E3%83%AB%E3%83%AA%E3%83%B3%E3%82%AF%E8%A8%98%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Markdownの参照スタイルリンク記法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Obsidian%20Web%20Clipper%E3%81%A8Claude%20Code%20Skill%E3%81%A7%E6%8A%80%E8%A1%93%E8%A8%98%E4%BA%8B%E3%82%92%E8%87%AA%E5%8B%95%E6%95%B4%E7%90%86%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Obsidian Web ClipperとClaude Code Skillで技術記事を自動整理する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Obsidian%E3%81%AETerminal%E3%83%97%E3%83%A9%E3%82%B0%E3%82%A4%E3%83%B3%E3%81%A7Windows%E3%81%A7%E5%88%A5%E3%82%A6%E3%82%A3%E3%83%B3%E3%83%89%E3%82%A6%E3%81%8C%E9%96%8B%E3%81%8F%E5%95%8F%E9%A1%8C%E3%81%AE%E8%A7%A3%E6%B1%BA%E7%AD%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ObsidianのTerminalプラグインでWindowsで別ウィンドウが開く問題の解決策
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PowerShell%E3%81%A7%E8%A4%87%E6%95%B0%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%82%921%E8%A1%8C%E3%81%AB%E6%9B%B8%E3%81%8F%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PowerShellで複数コマンドを1行に書く方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Pytesseract%E3%81%AETesseractNotFoundError%E8%A7%A3%E6%B1%BA%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PytesseractのTesseractNotFoundError解決方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Visual%20Studio%20Code%E3%81%A7launch.json%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9F%E3%83%87%E3%83%90%E3%83%83%E3%82%B0%E6%99%82%E3%81%AB%E4%BD%9C%E6%A5%AD%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%28CWD%29%E3%82%92%E6%8C%87%E5%AE%9A%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visual Studio Codeでlaunch.jsonを利用したデバッグ時に作業ディレクトリ(CWD)を指定する方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Visual%20Studio%20Code%E3%81%AElaunch.json%E3%81%A7PowerShell%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%82%92%E5%AE%9F%E8%A1%8C%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visual Studio Codeのlaunch.jsonでPowerShellコマンドを実行する方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    3 章 レスポンスデータの設計
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    3 章 レスポンスデータの設計
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 データフォーマット
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-jsonp" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 JSONP の取り扱い
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 JSONP の取り扱い">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jsonp-json-with-padding" class="md-nav__link">
+    <span class="md-ellipsis">
+      JSONP (JSON with padding)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 データの内部構造の考え方
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 データの内部構造の考え方">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.1 レスポンスの内容をユーザーが選べるようにする
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.2 エンベロープは必要か
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3.2 エンベロープは必要か">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      エンベロープ
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.3 データはフラットにすべきか
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#334" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.4 配列とフォーマット
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#335" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.5 配列の件数、あるいは続きがあるかをどう返すべきか
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 各データのフォーマット
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4 各データのフォーマット">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#341" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.1 各データの名前
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#342" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.2 性別のデータをどう表すか
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.4.2 性別のデータをどう表すか">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sex" class="md-nav__link">
+    <span class="md-ellipsis">
+      sex (生物学的な性別)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gender" class="md-nav__link">
+    <span class="md-ellipsis">
+      gender (社会的・文化的性別)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#343" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.3 日付のフォーマット
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#344-json" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.4 大きな整数と JSON
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5 レスポンスデータの設計
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6 エラーの表現
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3.6 エラーの表現">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#361" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6.1 ステータスコードでエラーを表現する
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#362" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6.2 エラーの詳細をクライアントに返す
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#363" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6.3 エラー詳細情報には何を入れるべきか
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#364-html" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6.4 エラーの際に HTML が返ることを防ぐ
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#365" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6.5 メンテナンスとステータスコード
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#366" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6.6 意図的に不正確な情報を返したい場合
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../freee%E3%81%A7%E5%80%8B%E4%BA%BA%E7%94%A8%E3%82%AB%E3%83%BC%E3%83%89%E6%89%95%E3%81%84%E3%83%BB%E5%AE%B6%E4%BA%8B%E6%8C%89%E5%88%86%E3%81%AE%E7%B5%8C%E8%B2%BB%E3%82%92%E5%85%A5%E5%8A%9B%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    freeeで個人用カード払い・家事按分の経費を入力する方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github%20readme%20stats%E3%81%AE%E7%B5%B1%E8%A8%88%E6%83%85%E5%A0%B1%E3%81%ABPrivate%20Repository%E3%82%82%E5%90%AB%E3%82%81%E3%82%8B%E3%82%88%E3%81%86%E3%81%AB%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    github readme statsの統計情報にPrivate Repositoryも含めるようにする
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../int%20%E2%87%94%20str%20%E3%81%AE%E7%9B%B8%E4%BA%92%E5%A4%89%E6%8F%9B%E6%99%82%E3%81%AE%E6%A1%81%E4%B8%8A%E9%99%90/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Int ⇔ str の相互変換時の桁上限
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mod%20P%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E9%80%86%E5%85%83%20%28%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%A9%E9%80%86%E6%95%B0%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mod Pにおける逆元 (モジュラ逆数)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ord%28%29%E3%81%A8chr%28%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ord()とchr()
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poetry%E3%81%AE%E4%BB%AE%E6%83%B3%E7%92%B0%E5%A2%83%E4%BD%9C%E6%88%90%E3%83%91%E3%82%B9%E3%82%92%E3%83%97%E3%83%AD%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E7%9B%B4%E4%B8%8B%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Poetryの仮想環境作成パスをプロジェクト直下に設定する方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../x%20%26%20%28-x%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    X & ( x)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xml%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%BD%A2%E5%BC%8F%E3%81%AE%E9%9B%BB%E5%AD%90%E7%9A%84%E6%8E%A7%E9%99%A4%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%81%8B%E3%82%89pdf%E5%BD%A2%E5%BC%8F%E3%81%AE%E6%8E%A7%E9%99%A4%E8%A8%BC%E6%98%8E%E6%9B%B8%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Xmlファイル形式の電子的控除証明書からpdf形式の控除証明書を作成する方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%82%A2%E3%83%B3%E3%82%B5%E3%83%B3%E3%83%96%E3%83%AB%E5%AD%A6%E7%BF%92%E3%81%A8%E3%83%A9%E3%83%B3%E3%83%80%E3%83%A0%E3%83%95%E3%82%A9%E3%83%AC%E3%82%B9%E3%83%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    アンサンブル学習とランダムフォレスト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%82%A4%E3%83%B3%E3%83%87%E3%83%83%E3%82%AF%E3%82%B9%E3%81%A8%E3%83%AA%E3%82%B9%E3%83%88%E3%81%AE%E5%80%A4%E3%82%92%E5%90%8C%E6%99%82%E3%81%AB%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B%E9%9A%9B%E3%81%AE%E6%B3%A8%E6%84%8F%E7%82%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    インデックスとリストの値を同時に変更する際の注意点
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%82%AA%E3%82%A4%E3%83%A9%E3%83%BC%E3%83%84%E3%82%A2%E3%83%BC/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    オイラーツアー
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%82%AA%E3%83%97%E3%83%88%E3%82%A2%E3%82%A6%E3%83%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    オプトアウト
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%82%AA%E3%83%97%E3%83%88%E3%82%A4%E3%83%B3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    オプトイン
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%AB%E3%83%AB%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    クラスカル法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%82%B0%E3%83%A9%E3%83%95%E3%81%A8%E6%9C%A8%E3%81%AE%E9%81%95%E3%81%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    グラフと木の違い
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%83%97%E3%83%AD%E3%83%B3%E3%83%97%E3%83%88%E3%81%A7%E8%A4%87%E6%95%B0%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%82%921%E8%A1%8C%E3%81%AB%E6%9B%B8%E3%81%8F%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンドプロンプトで複数コマンドを1行に書く方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%83%80%E3%83%96%E3%83%AA%E3%83%B3%E3%82%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ダブリング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%83%93%E3%83%83%E3%83%88%E6%BC%94%E7%AE%97%E3%81%AE%E8%AA%AD%E3%81%BF%E6%9B%BF%E3%81%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ビット演算の読み替え
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%83%BB%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E5%90%8D%E3%81%AE%E5%B0%8F%E6%96%87%E5%AD%97%E3%83%BB%E5%A4%A7%E6%96%87%E5%AD%97%E3%82%92%E5%A4%89%E6%9B%B4%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ファイル・フォルダ名の小文字・大文字を変更する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%83%95%E3%82%A7%E3%83%AB%E3%83%9E%E3%83%BC%E3%81%AE%E5%B0%8F%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    フェルマーの小定理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%83%9E%E3%83%B3%E3%83%8F%E3%83%83%E3%82%BF%E3%83%B3%E8%B7%9D%E9%9B%A2%E3%82%92%E6%89%B1%E3%81%86%E5%95%8F%E9%A1%8C%E3%81%AE%E3%83%86%E3%82%AF%E3%83%8B%E3%83%83%E3%82%AF/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    マンハッタン距離を扱う問題のテクニック
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E3%83%9E%E3%83%BC%E3%82%B8%E3%83%86%E3%82%AF%20%28%E5%A4%A7%E3%81%8D%E3%81%84%E3%82%B5%E3%82%A4%E3%82%BA%E3%81%AB%E5%B0%8F%E3%81%95%E3%81%84%E3%82%B5%E3%82%A4%E3%82%BA%E3%82%92%E3%83%9E%E3%83%BC%E3%82%B8%E3%81%99%E3%82%8B%29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    マージテク (大きいサイズに小さいサイズをマージする)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%B8%89%E4%BA%95%E4%BD%8F%E5%8F%8BOlive%E3%81%A7%E3%82%AF%E3%83%AC%E3%82%B8%E3%83%83%E3%83%88%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A7%E5%AE%9A%E6%9C%9F%E6%94%AF%E6%89%95%E3%82%92%E3%81%97%E3%82%88%E3%81%86%E3%81%A8%E3%81%97%E3%81%A6%E3%82%82%E3%83%87%E3%83%93%E3%83%83%E3%83%88%E3%82%AB%E3%83%BC%E3%83%89%E3%81%A7%E3%81%AF%E7%99%BB%E9%8C%B2%E3%81%A7%E3%81%8D%E3%81%AA%E3%81%84%E3%81%A8%E6%8B%92%E5%90%A6%E3%81%95%E3%82%8C%E3%82%8B%E5%A0%B4%E5%90%88%E3%81%AE%E5%AF%BE%E5%BF%9C%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    三井住友Oliveでクレジットカードで定期支払をしようとしてもデビットカードでは登録できないと拒否される場合の対応方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%B8%8D%E7%A2%BA%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86%E3%81%A8%E8%A6%B3%E6%B8%AC%E8%80%85%E5%8A%B9%E6%9E%9C%E3%81%AE%E9%81%95%E3%81%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    不確定性原理と観測者効果の違い
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%B8%AD%E9%96%93%E8%80%85%E6%94%BB%E6%92%83/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    中間者攻撃
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%96%E7%A9%8D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    外積
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BA%A7%E6%A8%99%E5%9C%A7%E7%B8%AE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    座標圧縮
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%BC%B7%E9%80%A3%E7%B5%90%E6%88%90%E5%88%86%E5%88%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    強連結成分分解
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%8B%A1%E5%BC%B5%E3%83%A6%E3%83%BC%E3%82%AF%E3%83%AA%E3%83%83%E3%83%89%E3%81%AE%E4%BA%92%E9%99%A4%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    拡張ユークリッドの互除法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%8F%A1%E6%89%8B%E3%81%AE%E8%A3%9C%E9%A1%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    握手の補題
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%95%B0%E5%88%97%E3%81%AE%E5%92%8C%E3%81%AE%E5%85%AC%E5%BC%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    数列の和の公式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%80%E9%95%B7%E5%A2%97%E5%8A%A0%E9%83%A8%E5%88%86%E5%88%97%28LIS%29%E3%81%AE%E9%95%B7%E3%81%95%E3%81%AE%E6%B1%82%E3%82%81%E6%96%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    最長増加部分列(LIS)の長さの求め方
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%A8%E3%81%AE%E7%9B%B4%E5%BE%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    木の直径
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%A5%AD%E5%8B%99%E3%81%AE%E7%B9%B0%E3%82%8A%E8%BF%94%E3%81%97%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%82%92Claude%20Code%20Skill%E3%81%A7%E5%8F%AF%E8%A6%96%E5%8C%96%E3%83%BB%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    業務の繰り返しパターンをClaude Code Skillで可視化・自動化する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%AC%A1%E5%85%83%E5%89%8A%E6%B8%9B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    次元削減
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B1%BA%E5%AE%9A%E6%9C%A8/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    決定木
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%A2%BA%E5%AE%9A%E7%94%B3%E5%91%8A%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E7%B5%8C%E8%B2%BB%E3%81%AE%E7%99%BA%E7%94%9F%E6%97%A5%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9%EF%BC%88%E7%99%BA%E7%94%9F%E4%B8%BB%E7%BE%A9%EF%BC%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    確定申告における経費の発生日の考え方（発生主義）
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%A2%BA%E7%8E%87p%E3%81%AE%E8%A9%A6%E8%A1%8C%E3%82%92%E6%88%90%E5%8A%9F%E3%81%99%E3%82%8B%E3%81%BE%E3%81%A7%E3%81%AE%E8%A9%A6%E8%A1%8C%E5%9B%9E%E6%95%B0%E3%81%AE%E6%9C%9F%E5%BE%85%E5%80%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    確率pの試行を成功するまでの試行回数の期待値
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%B4%A0%E6%95%B0%E3%81%AE%E9%96%93%E9%9A%94/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    素数の間隔
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%94%B5%E5%87%BA%E3%81%97%E7%A8%8E/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    蔵出し税
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%A1%8C%E3%81%8D%E3%81%8C%E3%81%91%E9%A0%86%E3%83%BB%E5%B8%B0%E3%82%8A%E3%81%8C%E3%81%91%E9%A0%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    行きがけ順・帰りがけ順
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%A4%87%E6%95%B0%E5%B9%B4%E5%A5%91%E7%B4%84%E3%81%AE%E4%BF%9D%E9%99%BA%E6%96%99%E3%82%92%E7%A2%BA%E5%AE%9A%E7%94%B3%E5%91%8A%E3%81%A7%E6%9C%9F%E9%96%93%E6%8C%89%E5%88%86%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    複数年契約の保険料を確定申告で期間按分する方法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E8%AA%BF%E5%92%8C%E7%B4%9A%E6%95%B0%E7%9A%84%E8%A8%88%E7%AE%97%E9%87%8F/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    調和級数的計算量
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E4%B8%8D%E7%A2%BA%E5%AE%9A%E6%80%A7%E5%8E%9F%E7%90%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    量子力学における不確定性原理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Daily
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Daily
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2022-01-23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022 01 23
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2022-02-13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python ３次元グラフ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2022-03-21/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022 03 21
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2022-06-26/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022 06 26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2022-07-02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022 07 02
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2022-07-31/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022 07 31
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2022-08-16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022 08 16
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2022-08-23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2022 08 23
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 02
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 03
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 04
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 05
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 06
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 07
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-15/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 15
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-19/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 19
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 20
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 23
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-03-25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 03 25
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-04-02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 04 02
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-04-19/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 04 19
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-05-20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 05 20
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-06-03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 06 03
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-06-11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 06 11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-06-23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 06 23
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-06-24/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 06 24
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-06-25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 06 25
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-06-26/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 06 26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-06-29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 06 29
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-06-30/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 06 30
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 02
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 04
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 05
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 07
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 09
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-12/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 12
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-13/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 13
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-14/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 14
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-18/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 18
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-19/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 19
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-21/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 21
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-23/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 23
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 25
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-28/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 28
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-30/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 30
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-07-31/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 07 31
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-08-01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 08 01
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-08-02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 08 02
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-08-03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    【アルゴリズム】セグメント木
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-08-06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 08 06
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-08-09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 08 09
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-08-20/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 08 20
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-09-24/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 09 24
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-10-16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 10 16
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2023-10-29/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2023 10 29
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2024-03-02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024 03 02
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2024-03-10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2024 03 10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-02-25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 02 25
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-02-26/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 02 26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-03-08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 03 08
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-03-16/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 03 16
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-03-24/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 03 24
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-05-25/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 05 25
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-05-30/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 05 30
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-06-01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 06 01
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-06-03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 06 03
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-06-04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UpdateFunctionConfiguration 実行時に ResourceConflictException が発生
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-06-08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 06 08
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/2025-09-22/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 09 22
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_72" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_72" id="__nav_3_72_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Weekly
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_72_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_72">
+            <span class="md-nav__icon md-icon"></span>
+            Weekly
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/Weekly/2025-W09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 W09
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/Weekly/2025-W10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 W10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Daily/Weekly/2025-W11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    2025 W11
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Moc
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Moc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/ClaudeCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ClaudeCode
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/Go/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Go
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/IT/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IT
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/Obsidian/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Obsidian
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/Python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/%E3%81%9D%E3%81%AE%E4%BB%96/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    その他
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    セキュリティ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/%E7%A2%BA%E5%AE%9A%E7%94%B3%E5%91%8A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    確定申告
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/%E7%A7%91%E5%AD%A6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    科学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/%E7%AB%B6%E6%8A%80%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    競技プログラミング
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Moc/%E8%AA%AD%E6%9B%B8%E3%83%A1%E3%83%A2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    読書メモ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ReadingNotes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            ReadingNotes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clean Architecture 達人に学ぶソフトウェアの構造と設計
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Clean Architecture 達人に学ぶソフトウェアの構造と設計
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Clean%20Architecture%20%E9%81%94%E4%BA%BA%E3%81%AB%E5%AD%A6%E3%81%B6%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E8%A8%AD%E8%A8%88/Clean%20Architecture%20%E9%81%94%E4%BA%BA%E3%81%AB%E5%AD%A6%E3%81%B6%E3%82%BD%E3%83%95%E3%83%88%E3%82%A6%E3%82%A7%E3%82%A2%E3%81%AE%E6%A7%8B%E9%80%A0%E3%81%A8%E8%A8%AD%E8%A8%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Clean Architecture　達人に学ぶソフトウェアの構造と設計 
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--unread"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Web API   The Good Parts
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Web API   The Good Parts
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/3%20%E7%AB%A0%20%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%A8%AD%E8%A8%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3 章 レスポンスデータの設計
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/3.1%20%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.1 データフォーマット
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/3.2%20JSONP%20%E3%81%AE%E5%8F%96%E3%82%8A%E6%89%B1%E3%81%84/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.2 JSONP の取り扱い
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/3.3%20%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E5%86%85%E9%83%A8%E6%A7%8B%E9%80%A0%E3%81%AE%E8%80%83%E3%81%88%E6%96%B9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.3 データの内部構造の考え方
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/3.4%20%E5%90%84%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%83%E3%83%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.4 各データのフォーマット
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/3.5%20%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%A8%AD%E8%A8%88/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.5 レスポンスデータの設計
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/3.6%20%E3%82%A8%E3%83%A9%E3%83%BC%E3%81%AE%E8%A1%A8%E7%8F%BE/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    3.6 エラーの表現
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/4%20%E7%AB%A0%20HTTP%20%E3%81%AE%E4%BB%95%E6%A7%98%E3%82%92%E6%9C%80%E5%A4%A7%E9%99%90%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4 章 HTTP の仕様を最大限利用する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/4.1%20HTTP%20%E3%81%AE%E4%BB%95%E6%A7%98%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B%E6%84%8F%E7%BE%A9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.1 HTTP の仕様を利用する意義
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/4.2%20%E3%82%B9%E3%83%86%E3%83%BC%E3%82%BF%E3%82%B9%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%86/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.2 ステータスコードを正しく使う
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/4.3%20%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%A8%20HTTP%20%E3%81%AE%E4%BB%95%E6%A7%98/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.3 キャッシュと HTTP の仕様
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/4.4%20%E3%83%A1%E3%83%87%E3%82%A3%E3%82%A2%E3%82%BF%E3%82%A4%E3%83%97%E3%81%AE%E6%8C%87%E5%AE%9A/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.4 メディアタイプの指定
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/4.5%20%E5%90%8C%E4%B8%80%E7%94%9F%E6%88%90%E5%85%83%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%A8%E3%82%AF%E3%83%AD%E3%82%B9%E3%82%AA%E3%83%AA%E3%82%B8%E3%83%B3%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E5%85%B1%E6%9C%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.5 同一生成元ポリシーとクロスオリジンリソース共有
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/4.6%20%E7%8B%AC%E8%87%AA%E3%81%AE%20HTTP%20%E3%83%98%E3%83%83%E3%83%80%E3%82%92%E5%AE%9A%E7%BE%A9%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    4.6 独自の HTTP ヘッダを定義する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/5%20%E7%AB%A0%20%E8%A8%AD%E8%A8%88%E5%A4%89%E6%9B%B4%E3%81%97%E3%82%84%E3%81%99%E3%81%84%20Web%20API%20%E3%82%92%E4%BD%9C%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5 章 設計変更しやすい Web API を作る
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/5.1%20%E8%A8%AD%E8%A8%88%E5%A4%89%E6%9B%B4%E3%81%AE%E3%81%97%E3%82%84%E3%81%99%E3%81%95%E3%81%AE%E9%87%8D%E8%A6%81%E6%80%A7/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.1 設計変更のしやすさの重要性
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/5.2%20API%20%E3%82%92%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%81%A7%E7%AE%A1%E7%90%86%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.2 API をバージョンで管理する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/5.3%20%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E3%82%92%E5%A4%89%E3%81%88%E3%82%8B%E9%9A%9B%E3%81%AE%E6%8C%87%E9%87%9D/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.3 バージョンを変える際の指針
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/5.4%20API%20%E3%81%AE%E6%8F%90%E4%BE%9B%E3%82%92%E7%B5%82%E4%BA%86%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.4 API の提供を終了する
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/5.5%20%E3%82%AA%E3%83%BC%E3%82%B1%E3%82%B9%E3%83%88%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E5%B1%A4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    5.5 オーケストレーション層
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/6%20%E7%AB%A0%20%E5%A0%85%E7%89%A2%E3%81%AA%20Web%20API%20%E3%82%92%E4%BD%9C%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6 章 堅牢な Web API を作る
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/6.1%20Web%20API%20%E3%82%92%E5%AE%89%E5%85%A8%E3%81%AB%E3%81%99%E3%82%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.1 Web API を安全にする
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/6.2%20%E3%82%B5%E3%83%BC%E3%83%90%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%81%AE%E9%96%93%E3%81%A7%E3%81%AE%E6%83%85%E5%A0%B1%E3%81%AE%E4%B8%8D%E6%AD%A3%E5%85%A5%E6%89%8B/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.2 サーバとクライアントの間での情報の不正入手
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/6.3%20%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B%20API%20%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E5%95%8F%E9%A1%8C/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    6.3 ブラウザでアクセスする API における問題
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/Web%20API%20-%20The%20Good%20Parts/Web%20API%20-%20The%20Good%20Parts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Web API   The Good Parts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    オブジェクト指向設計実践ガイド
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            オブジェクト指向設計実践ガイド
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E8%A8%AD%E8%A8%88%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89/%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E6%8C%87%E5%90%91%E8%A8%AD%E8%A8%88%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    オブジェクト指向設計実践ガイド
+    
+      <br>
+      <small>Rubyでわかる進化しつづける柔軟なアプリケーションの育て方</small>
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--unread"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E9%A7%86%E5%8B%95%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%20%E3%83%9C%E3%83%88%E3%83%A0%E3%82%A2%E3%83%83%E3%83%97%E3%81%A7%E3%82%8F%E3%81%8B%E3%82%8B%EF%BC%81%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E9%A7%86%E5%8B%95%E8%A8%AD%E8%A8%88%E3%81%AE%E5%9F%BA%E6%9C%AC/%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E9%A7%86%E5%8B%95%E8%A8%AD%E8%A8%88%E5%85%A5%E9%96%80%20%E3%83%9C%E3%83%88%E3%83%A0%E3%82%A2%E3%83%83%E3%83%97%E3%81%A7%E3%82%8F%E3%81%8B%E3%82%8B%EF%BC%81%E3%83%89%E3%83%A1%E3%82%A4%E3%83%B3%E9%A7%86%E5%8B%95%E8%A8%AD%E8%A8%88%E3%81%AE%E5%9F%BA%E6%9C%AC%20-%20%E6%88%90%E7%80%AC%E5%85%81%E5%AE%A3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ドメイン駆動設計入門 ボトムアップでわかる！ドメイン駆動設計の基本
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    現場で使えるTypeScript 詳解実践ガイド
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            現場で使えるTypeScript 詳解実践ガイド
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ReadingNotes/%E7%8F%BE%E5%A0%B4%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8BTypeScript%20%E8%A9%B3%E8%A7%A3%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89/%E7%8F%BE%E5%A0%B4%E3%81%A7%E4%BD%BF%E3%81%88%E3%82%8BTypeScript%20%E8%A9%B3%E8%A7%A3%E5%AE%9F%E8%B7%B5%E3%82%AC%E3%82%A4%E3%83%89/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    現場で使えるTypeScript 詳解実践ガイド 
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--unread"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="3">3 章 レスポンスデータの設計</h1>
+<h2 id="31">3.1 データフォーマット</h2>
+<ul>
+<li>JSON にデフォルトとして対応し、需要や必要性に応じて XML 等に対応する</li>
+<li>データフォーマットの指定方法の実装<ol>
+<li>クエリパラメータ (<code>https://api.example.com/v1/users?format=xml</code>)</li>
+<li>拡張子 (<code>https://api.example.com/v1/users.json</code>)</li>
+<li>リクエストヘッダのメディアタイプを指定 (<code>Accept: application/json</code>)</li>
+</ol>
+</li>
+<li>基本的にはクエリパラメータで実装する</li>
+</ul>
+<h2 id="32-jsonp">3.2 JSONP の取り扱い</h2>
+<h3 id="jsonp-json-with-padding">JSONP (JSON with padding)</h3>
+<p>クロスサイト環境でほかのオリジンから JSON データを取得するために考案された仕組み。XHTTPRequest は同一生成元ポリシーの制限によって、同じドメインへのアクセスしか行うことができない。<br />
+script タグでは src 属性に他ドメインを指定できることを利用する。</p>
+<ol>
+<li>ドメイン A でコールバック関数を用意</li>
+<li>script タグを生成しドメイン B にアクセス。この時 url パラメータでコールバック関数の名称を伝える。(<code>&lt;script src="http://domain_b/?callback=callback"&gt;&lt;/script&gt;</code>)</li>
+<li>ドメイン B ではデータ取得等を行い、データを引数としたコールバック関数を返却する。(<code>callback({"id": 123, "name": "saeed"})</code>)</li>
+<li>ドメイン A は B から返却されたコールバック関数を実行する</li>
+</ol>
+<p>コールバック関数の名前はクエリパラメータ (callback) で指定できるようにするのが一般的。<br />
+コールバック関数を動的に生成する場合等に、別々のコールバック関数を用意することができるようになるため。</p>
+<p>callback パラメータが指定されている場合に JSONP を要求していると判断する。</p>
+<p>script 要素はエラーステータスコード (400 等) が返るとスクリプトの読み込みを停止するため、JSONP に対応した場合にエラーコードを返すようにするとクライアント側ではそのエラーを検知できない。<br />
+=&gt; エラーが発生しても 200 を返す。レスポンスボディ内にエラー情報を入れ込む。</p>
+<h2 id="33">3.3 データの内部構造の考え方</h2>
+<p>まず考えるべきは、API のアクセス回数がなるべく減るようにすること。ユースケースを考える必要がある。<br />
+(ユーザー一覧の結果で ID だけ返す =&gt; 利用する側はユーザー情報も欲しいはず =&gt; 一緒にユーザー情報も返したほうが利用しやすい)</p>
+<h3 id="331">3.3.1 レスポンスの内容をユーザーが選べるようにする</h3>
+<p>多数の外部ユーザーが利用するような API はすべてユースケースを想定することはできない。<br />
+シンプルな解決法はできる限り多くのデータを返す。<br />
+ただこの方法ではデータ量が必要以上に大きくなりすぎる。<br />
+⇒ <strong>クエリパラメータで取得したい項目をユーザー側が自由に選択できるようにする</strong><br />
+(<code>http://api.example.com/v1/users/123?fields=name,age</code>)</p>
+<h3 id="332">3.3.2 エンベロープは必要か</h3>
+<h4 id="_1">エンベロープ</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>{
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    &quot;header&quot;: {
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>        &quot;status&quot;: &quot;success&quot;,
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        &quot;errorCode&quot;: 0,
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    },
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    &quot;response&quot;: {
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        ...実際のデータ...
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    }
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>}
+</span></code></pre></div>
+<p>上記のように返却するデータに共通したメタデータを含んだ構造のことを<strong>エンベロープ</strong>と呼ぶ。</p>
+<p>冗長な表現のため基本期には<strong>やるべきではない</strong>。<br />
+HTTP のレスポンスヘッダで同様のことができる。むしろ HTTP の知識さえあればメタ情報やエラー情報の意味を理解しやすいため、ユーザーフレンドリーになる。<br />
+ただし<strong>JSONP</strong>では利用したほうが便利になる。</p>
+<h3 id="333">3.3.3 データはフラットにすべきか</h3>
+<p>返却するデータを階層的に表すか、フラットに形で表すかは状況次第。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>階層
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>{
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    &quot;id&quot;: 123,
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    &quot;sender&quot;: {
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        &quot;id&quot;: 456,
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>        &quot;name&quot;: &quot;Taro Ymamoto&quot;
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    },
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    &quot;receiver&quot;: {
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        &quot;id&quot;: 789,
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        &quot;name&quot;: &quot;Kenji Kato&quot;
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    }
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>}
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>フラット
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>{
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    &quot;id&quot;: 123,
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>    &quot;sender_id&quot;: 456,
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>    &quot;sender_name&quot;: &quot;Taro Yamamot&quot;,
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>    &quot;receiver_id&quot;: 789,
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    &quot;receiver_name&quot;: &quot;Kenji Kato&quot;
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>}
+</span></code></pre></div>
+<p>上記の例では <code>sender</code> と <code>receiver</code> は同じユーザーという構造を表すため階層構造で表現したほうが、利用者側はユーザー型として扱いやすくなる。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>{
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    &quot;id&quot;: 123,
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    &quot;name&quot;: &quot;Tanaka Taro&quot;,
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    &quot;profile&quot;: {
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        &quot;birthday&quot;: &quot;193848754&quot;,
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>        &quot;gender&quot;: &quot;male&quot;,
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        &quot;languages&quot;: [&quot;ja&quot;, &quot;en&quot;]
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    }
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>}
+</span></code></pre></div>
+<p>上記の <code>profile</code> 項目のように単にまとめるだけの階層構造はあまり意味がない。フラットに表現したほうがデータサイズが小さくなる。また <code>profile</code> 単体で処理を行うことは考えにくいため、前出のユーザーの場合のように利用者側の利便性もよくならない。</p>
+<h3 id="334">3.3.4 配列とフォーマット</h3>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>{
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>    &quot;friends&quot;: [
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>        {
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>            &quot;id&quot;: 123,
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>            ...
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        },
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        {
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>            &quot;id&quot;: 345,
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>            ...
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        }
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    ]
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>}
+</span></code></pre></div>
+<p>友人一覧等の配列で値を返す場合、以下の理由からそのまま配列を返すよりもレスポンス全体をオブジェクトにして返すほうが良い。</p>
+<ul>
+<li>レスポンスデータが何を指しているかわかりやすい</li>
+<li>レスポンスデータをオブジェクトに統一できる (クライアント側で共通の前処理が容易になる)</li>
+<li><strong>セキュリティ上のリスクを避けることができる</strong></li>
+</ul>
+<p>トップレベルが配列である JSON は「<a href="../JSON%E3%82%A4%E3%83%B3%E3%82%B8%E3%82%A7%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3/">JSONインジェクション</a>」という脆弱性に対するリスクがあるため、基本的には API のレスポンスとして<strong>オブジェクトを返す</strong>ようにするべき。</p>
+<h3 id="335">3.3.5 配列の件数、あるいは続きがあるかをどう返すべきか</h3>
+<p>全体の件数を把握したうえで現在取得済の件数を考えれば続きがあるかはわかる。<br />
+ただし、全体の件数を取得する処理はコストが大きいことが多いので、実際に取得するどうかはユースケースを考える必要がある。<br />
+全体の件数が必要ないなら、サーバー側では取得件数 +1 件の取得を試みて、実際に取得件数 +1 件取得できれば、続きがあるとして考えることができる。</p>
+<p>続きがあることの返し方は 2 つ</p>
+<ul>
+<li>「hasNext」といった名前で結果に含める</li>
+<li>次のデータ取得に必要な「パラメータ」や「URL」を結果に含める</li>
+</ul>
+<h2 id="34">3.4 各データのフォーマット</h2>
+<h3 id="341">3.4.1 各データの名前</h3>
+<p>データ項目の名前についての考え方</p>
+<ul>
+<li>多くの API で同じ意味に利用されている一般的な単語を用いる</li>
+<li>なるべく少ない単語数で表現する<br />
+  （エンドポイント名が/users なら userId ではなく id で良いなど、エンドポイント名も考慮に入れる必要あり）</li>
+<li>複数の単語を連結する場合、連結方法は API 全体を通して統一する</li>
+<li>省略系は極力利用しない</li>
+<li>単数形/複数形に気を付ける<br />
+  （この項目で返る値が複数になる可能性があるのか、１つのみなのか）</li>
+</ul>
+<h3 id="342">3.4.2 性別のデータをどう表すか</h3>
+<p>項目名によって変わる。</p>
+<h4 id="sex">sex (生物学的な性別)</h4>
+<p>生物学的な性別はその他 (不明等) を含めても 3 種類<br />
+⇒文字列 (male, female 等) や数字 (1: male, 2: female)</p>
+<h4 id="gender">gender (社会的・文化的性別)</h4>
+<p>社会的に認められつつある性別 (Cis Woman, Trans 等) も含まれるため数が多い。<br />
+また今後増減する可能性がある。<br />
+⇒基本的に文字列で表す</p>
+<p>どちらの項目名を使うかは、サービスが生物学的な性別が必要な場合は sex、そうでない場合は gender を利用する。<br />
+API 全体で統一すべき。</p>
+<h3 id="343">3.4.3 日付のフォーマット</h3>
+<p>フォーマット例  </p>
+<table>
+<thead>
+<tr>
+<th>形式名</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RFC 822</td>
+<td>Sun, 06 Nov 1994 08:49:37 GMT</td>
+</tr>
+<tr>
+<td>RFC 850</td>
+<td>Sunday, 06-Nov-94 08:49:37 GMT</td>
+</tr>
+<tr>
+<td>ANSI C の astime() 形式</td>
+<td>Sun Nov 6 08:49:37 1994</td>
+</tr>
+<tr>
+<td>RFC 3339</td>
+<td>2015-10-12T11:30:22+09:00</td>
+</tr>
+<tr>
+<td>Unix タイムスタンプ (epoch 秒)</td>
+<td>1396821893</td>
+</tr>
+</tbody>
+</table>
+<p>広く一般に公開され、どのようなユーザーが利用するのか予測が難しい API(LSUDs をターゲットとした API) では<strong>RFC 3339</strong>を利用するのがよい。</p>
+<p>タイムゾーンは<strong>UTC(協定世界時, +00:00)</strong> を利用するのがよい。</p>
+<p>自社アプリ等で SSKDs 対象の場合は Unix タイムスタンプも候補に挙がる。</p>
+<h3 id="344-json">3.4.4 大きな整数と JSON</h3>
+<p>大きな数字は処理するシステムや言語によってはトラブルになることがある。<br />
+例として JavaScript では数値をすべて 64 ビット浮動小数として扱うため、下記を実行すると 462781738297483260 となり誤差が生じる。</p>
+<div class="language-javascript highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kd">var</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="s1">&#39;{&quot;id&quot;: 462781738297483264}&#39;</span><span class="p">);</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span><span class="w"> </span><span class="c1">// 462781738297483260</span>
+</span></code></pre></div>
+<p>このような問題を回避するためには、ID などで巨大な数値を扱う場合は数値をそのままかえすのではなく、<strong>文字列として返す</strong>と回避することができる。(Twitter API では数値とともに文字列を格納して返している)</p>
+<h2 id="35">3.5 レスポンスデータの設計</h2>
+<ul>
+<li>API は内部で持っている DB 等のデータ構造をそのまま反映する必要はない</li>
+<li>ユーザー情報を一つのオブジェクトとして定義すると、API 通して共通して利用することで、ユーザー側は同じロジックで処理ができる</li>
+<li>クライアント側の利用しやすい形に、かつシンプルにする</li>
+<li>結局、API のユースケースを考えて設計する必要がある</li>
+</ul>
+<h2 id="36">3.6 エラーの表現</h2>
+<p>クライアント側がエラーの原因の調査・特定に役立つ情報をなるべく多く返す必要がある。</p>
+<h3 id="361">3.6.1 ステータスコードでエラーを表現する</h3>
+<table>
+<thead>
+<tr>
+<th>ステータスコード</th>
+<th>意味</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100 番台</td>
+<td>情報</td>
+</tr>
+<tr>
+<td>200 番台</td>
+<td>成功</td>
+</tr>
+<tr>
+<td>300 番台</td>
+<td>リダイレクト</td>
+</tr>
+<tr>
+<td>400 番台</td>
+<td>クライアントサイドに起因するエラー</td>
+</tr>
+<tr>
+<td>500 番台</td>
+<td>サーバーサイドに起因するエラー</td>
+</tr>
+</tbody>
+</table>
+<p>データとしてエラー情報を返すが、HTTP レスポンスのステータスコードとして 200 番台を返すようなことはしてはならない。<br />
+適切なステータスコードで返すことで、クライアント側の原因特定につながる。<br />
+ピッタリくるステータスコードが存在しない場合は、"200", "400" 等の 00 番を利用する。</p>
+<h3 id="362">3.6.2 エラーの詳細をクライアントに返す</h3>
+<p>ステータスコードは汎用的な意味を表す。→エラーの詳細情報も返す必要がある。<br />
+エラーの内容を返す方法は大きく 2 つ。</p>
+<ul>
+<li>レスポンスヘッダに入れる<br />
+  ("X-MYNAME-ERROR-MESSAGE: Bad authentication token" のように独自のヘッダ項目を利用する)</li>
+<li>レスポンスボディに入れる</li>
+</ul>
+<p>ほとんどの API はレスポンスボディにエラー情報を入れて返している。<br />
+→クライアント側の利便性がよいためか</p>
+<h3 id="363">3.6.3 エラー詳細情報には何を入れるべきか</h3>
+<p>返す内容は以下の通り。</p>
+<ul>
+<li>エラーの詳細コード</li>
+<li>エラーメッセージ (人間が読める形式)</li>
+<li>さらなる情報が記載されたドキュメントページの URI</li>
+</ul>
+<p>エラーの詳細情報は API ごとに決める。既存のステータスコードと区別できるようにする。4 桁数字でステータスコードと同様に番台でカテゴリ分けするとよい。</p>
+<p>エラーメッセージエンドユーザーに直接表示できるような「非開発者向けメッセージ」と開発者が原因特定に利用できるような「開発者向けメッセージ」を両方含める方法もある。</p>
+<h3 id="364-html">3.6.4 エラーの際に HTML が返ることを防ぐ</h3>
+<p>基本的に API の結果は JSON や XML で返ることを期待される。<br />
+nginx 等のサーバーやアプリケーションフレームワークでデフォルトで 404 エラー等が HTML で返ることになっていることが多い。<br />
+エラー発生時でも適切なフォーマットでデータが返るようにする。</p>
+<h3 id="365">3.6.5 メンテナンスとステータスコード</h3>
+<p>API を停止しなければならない自体は極力避けるべき。API を利用しているサービスが動作しない、または一部動作が制限されるため。</p>
+<p>メンテナンスで停止する場合は 503（HTTP 503 Service Unavailable）を返す。<br />
+予定されたメンテナンスで終了予定時刻が分かっている場合はそれも通知するべき。<br />
+<strong>Retry-After</strong>という HTTP ヘッダにいつメンテナンスが終わるかを具体的な日付や、現在時刻からアクセス可能になるまでの秒数を入れる。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>503 Service Temporary Unavailable
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Retry-After: Mon, 2 Dec 2013 03:00:00 GMT
+</span></code></pre></div>
+<h3 id="366">3.6.6 意図的に不正確な情報を返したい場合</h3>
+<p>セキュリティ上やその他の理由で情報を曖昧にしたいケースが存在する。</p>
+<p>ブロック機能がある場合に、ブロックされたユーザーがブロックしたユーザー情報を取得しようとした場合等。エラーで返すが、メッセージでブロックされていると伝えるとさらなるトラブルにつながる可能性がある。<br />
+→「ブロックされた側からみるとブロックした側はすでに存在しないと同義」として 404 を返すことも可能。</p>
+<p>ログイン時に「メールアドレスが存在しない」「パスワードが違う」等の原因を伝えるのは悪意を持ったユーザーに対しても情報を与えることになる。</p>
+<p>正確な情報を返すのはあくまでも<strong>開発の効率化やユーザー体験の向上のため</strong>。<br />
+正確な情報を返すことでそれらが阻害されるならば返すべきではない。</p>
+<h1 id="4-http">4 章 HTTP の仕様を最大限利用する</h1>
+<h2 id="41-http">4.1 HTTP の仕様を利用する意義</h2>
+<p>標準の仕様をできる限り利用した API は第 3 者にとっても理解しやすい。<br />
+利用時のバグ混入を減らしたり、再利用可能性が高くなる。</p>
+<h2 id="42">4.2 ステータスコードを正しく使う</h2>
+<p>ステータスコードは HTTP のレスポンスヘッダの先頭に必ず入っている 3 桁の数字。リクエストがサーバによって処理された際のステータスを表す。</p>
+<p>汎用的な HTTP のクライアントライブラリは基本的にステータスコードをみて振る舞いを決めるため、適切なステータスコードを返さないと余計な問題を引き起こすことになる。</p>
+<h3 id="421-200">4.2.1 200 番台: 成功</h3>
+<p>指定したデータの取得、あるいはリクエストした処理が成功した場合には 200 番台のステータスコードを返す。</p>
+<ul>
+<li>201 Created (POST リクエストメソッド)</li>
+<li>202 Accepted (非同期処理: リクエスト受領かつ処理の未完了)</li>
+<li>204 No Content (レスポンス空: DELETE で削除を行った場合等)</li>
+</ul>
+<p>DELETE 時には基本的にはデータを返さない。PUT/PATCH, POST の場合はデータを返す。</p>
+<h3 id="422-300">4.2.2 300 番台: 追加で処理が必要</h3>
+<p>リダイレクト等で使用される。<br />
+リダイレクトの場合は<strong>Location</strong>というレスポンスヘッダにリダイレクト先の新しい URI が含まれる。</p>
+<p>ウェブサイトのように URI の変更にともなってリダイレクトを行うのは好ましくない。<br />
+クライアント側でリダイレクトにたいして実装をしているかわからないため。<br />
+何らかの理由でリソースが別の URI に変わる等でリダイレクト行う可能性がある場合は、必ずドキュメントに記載を行う。</p>
+<ul>
+<li>300 Multiple Choices (指定 URI が取得するデータを一意に特定するには曖昧な場合)</li>
+<li>304 Not Modified (前回のデータ取得から更新されていない。レスポンスボディは空)</li>
+</ul>
+<h3 id="423-400">4.2.3 400 番台: クライアントのリクエストに問題があった場合</h3>
+<p>サーバー側には問題はないが、クライアントが送ってきたリクエストが理解できなかったり、実行が許可されていない場合には 400 番台のステータスコードを返す。</p>
+<ul>
+<li>400 Bad Request (ほかの 400 番台ステータスコードに当てはまらない場合)</li>
+<li>401 Authentication (認証エラー: アクセス元が識別できない)</li>
+<li>403 Authorization (認可エラー: 操作が許可されていない)</li>
+<li>404 Not Found (アクセスしようとしたデータが存在しない)<br />
+  (指定したデータが存在しないのか、URI が存在しないのか詳しい情報の返却が必要)</li>
+<li>405 Method Not Allowed (エンドポイントは存在するがメソッドが許可されていない)</li>
+<li>406 Not Acceptable (クライアント指定のデータ形式に API が対応していない)</li>
+<li>408 Request Timeout (タイムアウト)</li>
+<li>409 Conflict (リソース競合: 同じ ID でユーザー登録を使用とする等)</li>
+<li>410 Gone (アクセスしたデータかつて存在したが、現在は存在しない場合。404 との違いはデータがかつて存在していたかどうか)</li>
+<li>413 Request Entity Too Large (リクエストボディが大きすぎる)</li>
+<li>414 Request-URI Too Long (リクエストヘッダが大きすぎる)</li>
+<li>415 Unsupported Media Type (リクエストヘッダの Content-Type で指定されているデータ形式にサーバー側が対応していない場合 (リクエストボディのデータ形式))</li>
+<li>429 Too Many Requests (アクセス回数が許容範囲の限界を超えた場合)</li>
+</ul>
+<h3 id="424-500">4.2.4 500 番台: サーバに問題があった場合</h3>
+<p>サーバー側に問題があった場合は 500 番台のエラーを返す。</p>
+<ul>
+<li>500 Internal Server Error (サーバー側でエラーが発生して処理が停止した)</li>
+<li>503 Service Unavailable (サーバーが一時的に利用できない (意図的がそうでないかは問わない))</li>
+</ul>
+<p>500 番台のエラーはログを監視し、管理者に通知が行くように設定、再発防止を図る。</p>
+<h2 id="43-http">4.3 キャッシュと HTTP の仕様</h2>
+<p>キャッシュのメリットは以下の通り</p>
+<ul>
+<li>ネットワークが切れた場合でもある程度サービスを継続できる</li>
+<li>サーバへの通信回数・転送量が減る<br />
+  (ユーザーの体感速度向上やユーザー/サーバ側のコスト低減につながる)</li>
+</ul>
+<p>プロキシサーバーがある場合はデータ鮮度に気を付ける必要あり。</p>
+<h3 id="431-expiration-model">4.3.1 Expiration Model (期限切れモデル)</h3>
+<p>レスポンスデータにキャッシュの保存期間を設定しておき、期限が切れたら再度アクセスをしてデータ取得を行う。<br />
+保存期間の指定方法は以下の 2 つ。</p>
+<h4 id="cache-control">Cache-Control レスポンスヘッダを利用</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Cache-Control: max-age=3600
+</span></code></pre></div>
+<p>現在時刻からの秒数を指定を行う。<br />
+max-age の計算には Date ヘッダ (レスポンスが生成されたサーバ側の日時) が利用される。</p>
+<h4 id="expires">Expires レスポンスヘッダを利用</h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Expires: Fri, 01 Jan 2016 00:00:00 GMT
+</span></code></pre></div>
+<p>期限切れを絶対時間で RFC1123 で定義された形式で指定する。</p>
+<p>両方を併用した場合は<strong>Cache-Control が優先される</strong>。</p>
+<h3 id="432-validation-model">4.3.2 Validation Model (検証モデル)</h3>
+<p>保持しているキャッシュが有効かどうかをサーバに問い合わせる方法 (条件付きリクエスト)。<br />
+問い合わせの結果として、有効の場合は「有効である」という情報のみ、有効でない場合は最新のデータを返す。<br />
+通信によるオーバーヘッドは変わらないが、転送データが軽減できる。</p>
+<p>条件付きリクエストでは「保持してるデータの状態」として<strong>最終更新日時</strong>や<strong>エンティティタグ（MD ハッシュ等）</strong> をサーバに伝える。<br />
+これらはサーバ側で生成され、クライアント側でキャッシュとして保存される。</p>
+<p>最終更新日時とエンティティタグのやり取りは以下のヘッダが利用される。</p>
+<h5 id="_2">レスポンスヘッダ</h5>
+<p>それぞれ<strong>Last-Modified</strong> と<strong>ETag</strong> が利用される。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Last-Modified: Tue, 01, Jul 2014 00:00:00 GMT
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>ETag: &quot;ffiegnoabieaf853y29nfg94b7y&quot;
+</span></code></pre></div>
+<h5 id="_3">リクエストヘッダ</h5>
+<p>それぞれ<strong>If-Modified-Since</strong>と<strong>If-None-Match</strong>ヘッダを利用する。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>If-Modified-Since: Tue, 01, Jul 2014 00:00:00 GMT
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>If-None-Match: &quot;ffiegnoabieaf853y29nfg94b7y&quot;
+</span></code></pre></div>
+<p>サーバー側からのレスポンスではステータスコードはキャッシュが有効な場合は<strong>304</strong>で空ボディ、変更があった場合は<strong>200</strong>とともに最新データを返す。</p>
+<h3 id="433-heuristic-expiration">4.3.3 Heuristic Expiration（発見的期限切れ）</h3>
+<p>サーバの更新頻度や状況を参考に、クライアント側でキャッシュの有効期限を決める方法を Heuristic Expiration（発見的期限切れ）とよぶ。</p>
+<h3 id="434">4.3.4 キャッシュさせたくない場合</h3>
+<p>Cache-Control ヘッダを以下のように利用してキャッシュをさせたくないことをクライアント側に伝えることができる。</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Cache-Control: no-cache
+</span></code></pre></div>
+<h3 id="435-vary">4.3.5 Vary でキャッシュの単位を指定する</h3>
+<p>キャッシュを行う際に、URI 以外にどのリクエストヘッダ項目をデータを一意に特定するのに利用するかを指定する場合は<strong>Vary ヘッダ</strong>を利用する。<br />
+(Accept-Language ヘッダに指定の言語によってレスポンスの利用言語を変える場合等に利用される[<a href="https://developer.mozilla.org/ja/docs/Web/HTTP/Content_negotiation#%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E9%A7%86%E5%8B%95%E5%9E%8B%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E3%83%8D%E3%82%B4%E3%82%B7%E3%82%A8%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">サーバ駆動型コンテンツネゴシエーション</a>\の一例])</p>
+<h3 id="436-cache-control">4.3.6 Cache-Control ヘッダ</h3>
+<p><img alt="Pasted image 20231220195107.png" src="../../Assets/Pasted%20image%2020231220195107.png" /></p>
+<h4 id="stale-while-revalidate">stale-while-revalidate</h4>
+<p><code>stale-while-revalidate=600</code> のように秒数を指定する。レスポンスヘッダに指定する。<br />
+プロキシサーバーが <code>max-age</code> で指定された秒数を超えた後に、キャッシュを返しつつ非同期でキャッシュの検証を行う時間を指定できる。</p>
+<p><img alt="Pasted image 20231223202010.png" src="../../Assets/Pasted%20image%2020231223202010.png" /></p>
+<h4 id="stale-if-error">stale-if-error</h4>
+<p>オリジンサーバへのアクセスが何らかの理由で失敗した時に、保持している新鮮でないキャッシュをクライアントに返してもよい秒数を指定する。<br />
+サーバの停止等があっても少しの間サービスを継続することができる。</p>
+<h2 id="44">4.4 メディアタイプの指定</h2>
+<p>HTTP のリクエスト、レスポンスにおいて送信するデータ本体の形式を指定するのにメディアタイプが利用される。<br />
+メディアタイプの記述方法は以下の通り。<br />
+<code>トップレベルタイプ名 / サブタイプ名 [ ; パラメータ]</code><br />
+トップレベルタイプ名はデータ形式が大別してテキストなのか画像なのか等のカテゴリを示し、サブタイプ名が具体的なデータ形式を示す。</p>
+<table>
+<thead>
+<tr>
+<th>メディアタイプ</th>
+<th>データ形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>text/plain</td>
+<td>プレーンテキスト</td>
+</tr>
+<tr>
+<td>text/html</td>
+<td>HTML 文書</td>
+</tr>
+<tr>
+<td>application/rss+xml</td>
+<td>RSS フィード</td>
+</tr>
+<tr>
+<td>image/jpeg</td>
+<td>JPEG 画像</td>
+</tr>
+<tr>
+<td>image/svg+xml</td>
+<td>SVG 画像</td>
+</tr>
+</tbody>
+</table>
+<p>基本的には <code>text/css</code>、<code>text/html</code> を除き、テキストデータとして開くことが可能でも、トップレベルタイプ名は <code>application</code> を利用することが多い。</p>
+<h3 id="441-content-type">4.4.1 メディアタイプを Content-Type で指定する必要性</h3>
+<p>全ての API は適切なメディアタイプをクライアントに返すべき。クライアントの多くは Content-Type の値を使ってデータ形式を判断しているため。</p>
+<h3 id="442-x-">4.4.2 x- で始まるメディアタイプ</h3>
+<p><code>application/x-msgpack</code> のようにサブタイプが <code>x-</code> で始まるものは、このメディアタイプが IANA(Internet Assigned Numbers Authority) に登録されていないことを示す。</p>
+<p>例外的に HTML のフォームデータを送信する際に使われる <code>application/x-www-form-urlencoded</code> だけは RFC1866 で明記され、IANA に登録された正式メディアタイプになっている。</p>
+<h3 id="443">4.4.3 自分でメディアタイプを定義する場合</h3>
+<p>RFC6838 において <code>x-</code> で始まるメディアタイプが未登録のメディアタイプを表すものとはみなされないと明記されているため、独自メディアタイプとして <code>x-</code> で始まるものを定義するべきではない。</p>
+<p>サブタイプをその登録方法によって分類するためのカテゴリである<br />
+Registration tree を利用するべき。サブタイプの先頭に接頭辞を付けて区分する。</p>
+<table>
+<thead>
+<tr>
+<th>ツリー名</th>
+<th>接頭辞</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standards tree (標準ツリー)</td>
+<td>なし</td>
+<td>IANA に登録されている一般的なデータ形式</td>
+</tr>
+<tr>
+<td>Vendor tree (ベンダツリー)</td>
+<td>vnd .</td>
+<td>広く利用されることを目的としているものの、特定の企業や団体が管理しているデータ形式 (Excel 等)</td>
+</tr>
+<tr>
+<td>Personal tree (パーソナルツリー)</td>
+<td>prs.</td>
+<td>実験的な実装、あるいは公に公開されることのない製品においてのみ扱うデータ形式</td>
+</tr>
+<tr>
+<td>Unregistered tree (未登録ツリー)</td>
+<td>x.</td>
+<td>ローカル環境等のプライベート環境のみで利用するデータ形式。ベンダツリーやパーソナルツリーで十分なため基本的には利用は推奨されていない。</td>
+</tr>
+</tbody>
+</table>
+<p>公開 API において独自のメディアタイプを定義する場合は、基本的にはベンダツリーを利用する。フォーマットは以下の通り。<br />
+<code>application/vnd.companyname.awesomeformat</code></p>
+<h3 id="444-json-xml">4.4.4 JSON や XML を用いた新しいデータ形式を定義する場合</h3>
+<p>JSON や XML などの標準化されたデータ形式を使って、独自のデータ形式を定義する場合は <code>+xml</code> や <code>+json</code> のように用いたデータ形式を <code>+</code> に続けて記述する。</p>
+<table>
+<thead>
+<tr>
+<th>メディアタイプ</th>
+<th>データ形式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>application/rss+xml</td>
+<td>RSS フィード</td>
+</tr>
+<tr>
+<td>application/atom+xml</td>
+<td>Atom フィード</td>
+</tr>
+</tbody>
+</table>
+<h3 id="445">4.4.5 メディアタイプとセキュリティ</h3>
+<p>正しいメディアタイプを指定していない場合、ブラウザを介した場合にセキュリティ上の問題を引き起こす可能性がある。<br />
+JSON ファイルを間違って <code>text/html</code> で配信してしまった場合、その JSON ファイルの URI を直接叩いてアクセスした際に、ブラウザはデータ形式をもとに HTML として表示する。<br />
+この時 JSON 中に javascript が埋め込まれていた場合にそれが実行されてしまう。</p>
+<h3 id="446">4.4.6 リクエストデータとメディアタイプ</h3>
+<h4 id="accept">Accept ヘッダ</h4>
+<p>クライアントが「どのメディアタイプが受け入れ可能か」をサーバに伝えるために使われる。複数のメディアタイプを列挙でき、q(Quality Value) で優先度を指定できる。<br />
+<code>Accept: text/html, application/xhtml+xml, application/xml;q=0.9, image/webp;1=0.8</code></p>
+<p>クライアント側が欲しいデータ形式をサーバ側に伝える方法として Accept ヘッダは利用されるが、URI のクエリパラメータで指定する方法も一般的で手軽である。どちらを利用するかは議論が分かれる。</p>
+<h2 id="45">4.5 同一生成元ポリシーとクロスオリジンリソース共有</h2>
+<p>XHTTPRequest では異なるドメインに対してアクセスを行い、レスポンスデータを読み込むことができない。これは<strong>同一生成元ポリシー(Same Origin Policy)</strong> というセキュリティ上のポリシーによるもの。<br />
+異なる生成元にアクセスしたい場合は、<strong>クロスオリジンリソース共有 (CORS: Cross-Origin Resource Sharing)</strong> を利用する。</p>
+<h3 id="451-cors">4.5.1 CORS の基本的なやりとり</h3>
+<p><code>http://www.example.com/</code> から <code>http://api.example.com/</code> にアクセスする場合。</p>
+<ol>
+<li>クライアント側から <code>Originヘッダ</code> で生成元 (<code>http://www.example.com/</code>) を指定する。</li>
+<li>サーバ側では許可する生成元一覧を保持し、Origin ヘッダの生成元が一覧に存在するかチェックを行う。<ol>
+<li>存在しない: 403 エラーを返す</li>
+<li><code>Access-Control-Allow-Origin</code> というレスポンスヘッダに Origin ヘッダと同じ生成元を入れてレスポンスを返す。</li>
+</ol>
+</li>
+</ol>
+<h3 id="452">4.5.2 プリフライトリクエスト</h3>
+<p>プリフライトリクエストは実際に生成元をまたいだリクエストを行う前に、そのリクエストが受け入れられるかどうかをチェックを行うこと。行う必要があるのは以下の場合。</p>
+<ul>
+<li>HTTP メソッドが Simple Methods (HEAD/GET/POST) 以外の場合</li>
+<li>以下のヘッダ以外を送信しようとしている<ul>
+<li>Accept</li>
+<li>Accept-Language</li>
+<li>Content-Language</li>
+<li>Content-Type</li>
+</ul>
+</li>
+<li>以下のメディアタイプ以外を指定している<ul>
+<li>application/x-www-form-urlencoded</li>
+<li>multipart/form-data</li>
+<li>text/plain</li>
+</ul>
+</li>
+</ul>
+<p>プリフライトリクエストは <code>OPTIONメソッド</code> を利用して送信される。<br />
+プリフライトリクエストは通常はブラウザが自動的に発行するため、開発者が自分でリクエストを作成する必要はない。</p>
+<h3 id="453-cors">4.5.3 CORS とユーザー認証情報</h3>
+<p>CROS ではユーザー認証情報 (Credential) を送信する場合は追加の HTTP ヘッダを利用する必要がある。</p>
+<ul>
+<li>クライアント側<ul>
+<li><code>Cookieヘッダ</code> や <code>Authenticationヘッダ</code> に認証情報を埋め込む</li>
+<li><code>withCredentialsプロパティ</code> に true をセットする</li>
+</ul>
+</li>
+<li>サーバ側<ul>
+<li><code>Access-Control-Allow-Credentialsヘッダ</code> に true を入れて返す</li>
+</ul>
+</li>
+</ul>
+<h2 id="46-http">4.6 独自の HTTP ヘッダを定義する</h2>
+<p>適切なヘッダが存在しないメタデータを送りたい場合は、独自の HTTP ヘッダを定義することができる。新しく定義する場合は、<code>x-</code> という接頭辞を付けて、次にサービスや組織等の名称を付けるのが一般的。<br />
+(例: <code>x-GitHub-Request-Id</code>)</p>
+<h1 id="5-web-api">5 章 設計変更しやすい Web API を作る</h1>
+<h2 id="51">5.1 設計変更のしやすさの重要性</h2>
+<p>API は何らかのアプリケーションのインターフェースとしての役割を持つ。<br />
+アプリケーションは機能の追加やバグの修正等で常に変化するため、API の変更は避けることができない。</p>
+<h3 id="511-api">5.1.1 外部に公開している API の場合</h3>
+<p>LSUDs の場合。<br />
+大きな仕様変更は API を利用している外部ユーザーやサービスに大きな影響を与える。<br />
+結果として API の利用をやめる可能性がある。</p>
+<h3 id="512-api">5.1.2 モバイルアプリケーション向け API の場合</h3>
+<p>SSKDs の場合。<br />
+外部に公開している場合に比べれば、利用しているのは自分が公開したモバイルアプリケーションのみなので影響は少ない。<br />
+ただし、モバイルアプリケーションのアップデートはユーザーが自分でアップデートをする必要がある場合がほとんど。そのため API の変更内容によっては古いクライアントを利用しているユーザーが使えなくなる可能性がある。</p>
+<h3 id="513-api">5.1.3 ウェブサービス上で使っている API の場合</h3>
+<p>API の変更もクライアント側の変更も自分たちのタイミングで実施ができるため、上 2 つに比べれば影響は少ない。<br />
+ブラウザキャッシュの問題は残る。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>一度公開した Web API の仕様変更はいずれにせよ何らかの問題が発生する危険性がある。</p>
+</div>
+<h2 id="52-api">5.2 API をバージョンで管理する</h2>
+<p>問題回避の最も良い方法は、一度公開した API をできる限り変更しないこと。<br />
+新しいエンドポイントや別のパラメータを付けた URI など、何らかの新しいアクセス形式で公開を行う。<br />
+=&gt; 古いクライアントは旧 API を利用し、新しいクライアントは新 API を利用できる。</p>
+<p>新旧の API を共存させる方法として API に何らかの形式でバージョン番号を振っていく。</p>
+<h3 id="521-uri">5.2.1 URI のバージョンを埋め込む</h3>
+<table>
+<thead>
+<tr>
+<th>サービス</th>
+<th>エンドポイント</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Twitter(旧バージョン 1)</td>
+<td><code>http://twitter.com/statuses/user_timeline.xml</code></td>
+</tr>
+<tr>
+<td>Twitter(新バージョン 1)</td>
+<td><code>https://api.twitter.com/1/statuses/user_timeline.json</code></td>
+</tr>
+<tr>
+<td>Twitter(バージョン 1.1)</td>
+<td><code>https://api.twitter.com/1.1/statuses/user_timeline.json</code></td>
+</tr>
+</tbody>
+</table>
+<p>URI のパスの一番先頭にバージョン番号を埋め込む。<code>v1</code> のようにバージョン番号であることを示す <code>v</code> を付けることもある。</p>
+<h3 id="522">5.2.2 バージョン番号をどう付けるか</h3>
+<p>基本的は API のバージョンは簡単に上げるべきではないため、整数でカウントアップしていく。<br />
+セマンティックバージョニングとは異なる。<br />
+小さな変更は後方互換性を担保して対応し、後方互換性を失うほど大きく重要な変更を行う場合のみバージョンを上げる。</p>
+<h3 id="523">5.2.3 バージョンをクエリ文字列に入れる</h3>
+<p><code>http://api-public.netflix.com/catalog/titles/series/703?v=1.5</code></p>
+<p>パスに埋め込む場合と異なり、クエリ文字列の時は省略が可能。省略した場合はデフォルト（最新版が多い）のバージョンが利用される。<br />
+指定を省略しているユーザーがバージョンアップの際に自動的に最新版 API を利用することになり、問題が発生する可能性がある。</p>
+<h3 id="524">5.2.4 メディアタイプでバージョンを指定する方法</h3>
+<ul>
+<li>クライアント側<ul>
+<li>バージョン番号を含むメディアタイプを指定する</li>
+<li><code>Accept: application/vnd.exmple.v2+json</code></li>
+</ul>
+</li>
+<li>サーバー側<ul>
+<li>サーバー側はレスポンスの際に <code>Content-Type, Varyヘッダ</code> を付ける</li>
+<li>メディアタイプによってレスポンスが変わるのでキャッシュの際に <code>Acceptヘッダ</code> の考慮が必要</li>
+<li><code>Content-Type: application/vnd.example.v2+json</code><br />
+<code>Vary: Accept</code></li>
+</ul>
+</li>
+</ul>
+<p>クライアント側のライブラリによっては独自メディアタイプは正常に認識していもらえない可能性がある。<br />
+→独自の HTTP ヘッダを定義して、そのヘッダを用いてバージョン指定する方法もある。</p>
+<h3 id="525">5.2.5 どの方法を採用するべきか</h3>
+<p>どの方法も一長一短。<br />
+URI パスにバージョンを含める方法が最も広く利用されている。</p>
+<h2 id="53">5.3 バージョンを変える際の指針</h2>
+<p>後方互換性を保つことが可能な変更は、可能な限り同じバージョンでのマイナーバージョンアップで対応し、<strong>どうしても後方互換性を保ったまま修正を行うことが難しい場合のみ</strong> にバージョンを上げるべき。</p>
+<p>データ名の変更や形式の変更等ではバージョンは上げない。ドキュメント等に古いやり方はバージョンアップの際に廃止される旨を記載し、古い項目の利用時に注意できるようにする。</p>
+<p>後方互換性を保たなくてよい変更の例</p>
+<ul>
+<li>セキュリティや権限などのルールを変更した場合<br />
+  (認証を追加する・ベーシック認証を廃止し OAuth のみに変更する等)</li>
+<li>開発初期の API 等のルール未整理のまま拡大した API の整理等</li>
+</ul>
+<h3 id="531">5.3.1 常に最新版を返すエイリアスは必要か</h3>
+<p>基本的には不要。同じ方法でのアクセスで挙動が変化する可能性があるのは、利用者側からしてみれば利用しづらい。</p>
+<h2 id="54-api">5.4 API の提供を終了する</h2>
+<p>API を終了する場合、特に広く一般に公開された API の提供を終了する場合には、事前に終了日時をアナウンスし、利用者にそれまでに対応するように周知徹底をする。</p>
+<h3 id="541-twitter">5.4.1 ケーススタディ: Twitter の場合</h3>
+<p>バージョン 1.0 の廃止、1.1 への移行</p>
+<h4 id="blackout-test">Blackout Test</h4>
+<p>一時的に終了する API を停止してアクセスできないようにするテスト。</p>
+<p>「継続的な告知」や「Blackout Test」を行い周知徹底を行っていた。</p>
+<h3 id="542">5.4.2 あらかじめ提供終了時の仕様を盛り込んでおく</h3>
+<p>API のドキュメントに提供終了後の仕様を記載する。以下は一例。</p>
+<ul>
+<li>公開終了後はステータスコード 410(Gone) を返す</li>
+<li>エラーメッセージとして API が公開終了していること、新しい API を利用すること等を記載する</li>
+</ul>
+<p>自社のモバイルアプリ向け API の場合はアプリ側にも提供終了後の仕様を追加しておく。<br />
+(強制アップデート等)</p>
+<h3 id="543">5.4.3 利用規約にサポート期限を明記する</h3>
+<p>利用規約に古いバージョンをどのくらいの期間サポートをするのかという最低限の期間を定めておく。<br />
+→サービスの「保障」と「提供範囲の明確化」を行う</p>
+<h2 id="55">5.5 オーケストレーション層</h2>
+<p>LSUDs 向けの API では、なるべく汎用性のある設計にする必要がある。一方 SSKDs 向けでは利用者のユースケースに合わせた設計にすることができるが、そのユースケースがいくつも存在する場合はオーケストレーション層を挟むことで対応できる。</p>
+<p>サーバ側の汎用的な API とクライアントの間に <code>Client Adapter Code</code> を実行する層を挟み、様々なデバイスに対応できるようにする。この層はオーケストレーション層と呼ばれる。作成するのは<strong>クライアント側のエンジニア</strong>。</p>
+<h1 id="6-web-api">6 章 堅牢な Web API を作る</h1>
+<h2 id="61-web-api">6.1 Web API を安全にする</h2>
+<h3 id="611">6.1.1 どんなセキュリティの問題があるのか</h3>
+<p>セキュリティの問題には以下のようなパターンがある。</p>
+<ul>
+<li>サーバとクライアントの間での情報の不正入手</li>
+<li>サーバの脆弱性による情報の不正入手や改ざん</li>
+<li>ブラウザからのアクセスを想定している API における問題</li>
+</ul>
+<h2 id="62">6.2 サーバとクライアントの間での情報の不正入手</h2>
+<p>Web API は通常のウェブサイトと同様に HTTP という暗号化の仕様を持たないプロトコルでやり取りを行う。そのためクライアントとサーバ間の通信経路における情報の不正入手を防ぐ方法が重要。</p>
+<h3 id="621-https-http">6.2.1 HTTPS による HTTP 通信の暗号化</h3>
+<p>最も簡単でなおかつ効果のある方法は HTTP による通信を暗号化すること。<br />
+広く利用されているのが HTTPS（HTTP Secure）という TLS による暗号化。<br />
+暗号化されるのは以下の情報。</p>
+<ul>
+<li>URI のパス</li>
+<li>クエリ文字列</li>
+<li>ヘッダ</li>
+<li>ボディ（リクエスト・レスポンス両方）</li>
+</ul>
+<h3 id="622-https-100">6.2.2 HTTPS を使えば 100% 安全か</h3>
+<p>ウェブサーバや暗号化機能を提供するライブラリにバグがある可能性があるため、100% 安全であるとは言えない。またクライアント側での処理に問題ある場合も安全性を担保できない。</p>
+<p>サーバが送ってきた SSL 証明書を検証しない場合、クライアントとサーバの通信経路の間に入り込んで中継を行い、情報を盗みだすことができてしまう。</p>
+<p>サーバ側で対策していてもクライアント側の問題でセッションハイジャックや盗聴が発生する可能性がある。</p>
+<p><a href="../%E4%B8%AD%E9%96%93%E8%80%85%E6%94%BB%E6%92%83/">中間者攻撃</a></p>
+<h2 id="63-api">6.3 ブラウザでアクセスする API における問題</h2>
+<h3 id="631-xss">6.3.1 XSS</h3>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10m-6.5-4c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5-1.5-.7-1.5-1.5.7-1.5 1.5-1.5M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m2 4.5c1.75 0 3.29.72 4.19 1.81l-1.42 1.42C14.32 16.5 13.25 16 12 16s-2.32.5-2.77 1.23l-1.42-1.42C8.71 14.72 10.25 14 12 14"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.path", "navigation.top", "toc.integrate"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+        <script src="../../scripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="../../scripts/katex.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/katex.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.7/contrib/auto-render.min.js"></script>
+      
+    
+  </body>
+</html>
