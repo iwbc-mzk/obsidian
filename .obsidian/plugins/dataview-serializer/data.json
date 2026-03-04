@@ -3,5 +3,13 @@
   "ignoredFolders": [
     "05_Templates",
     "01_Assets"
-  ]
+  ],
+  "disableAutomaticUpdates": false,
+  "showRefreshButton": true,
+  "foldersToForceUpdate": [],
+  "showErrorNotifications": true,
+  "debugLogging": false,
+  "addTrailingNewline": false,
+  "linkFormat": "shortest",
+  "enableDataviewJS": true
 }

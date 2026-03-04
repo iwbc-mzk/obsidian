@@ -1,6 +1,6 @@
 ---
 created: 2026-02-28 Sat 10:45
-updated: 2026-02-28 Sat 11:58
+updated: 2026-03-04 Wed 21:18
 ---
 # CLAUDE.md
 
@@ -76,3 +76,7 @@ Commits are vault backups with the format `vault backup: YYYY-MM-DD HH:MM:SS`. T
 
 ### 改行コード
 編集時は必ずCRLF形式の改行を利用する
+
+
+### Obsidian CLI
+Obsidian Valut内のファイル検索や操作はObsidian CLIを利用する

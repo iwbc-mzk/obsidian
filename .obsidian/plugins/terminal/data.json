@@ -7,7 +7,8 @@
   "focusOnNewInstance": true,
   "hideStatusBar": "focused",
   "interceptLogging": true,
-  "language": "",
+  "language": "ja",
+  "macOSOptionKeyPassthrough": true,
   "newInstanceBehavior": "newHorizontalSplit",
   "noticeTimeout": 5,
   "openChangelogOnUpdate": true,
@@ -16,7 +17,7 @@
   "profiles": {
     "win32IntegratedDefault": {
       "args": [],
-      "executable": "C:\\Windows\\System32\\cmd.exe",
+      "executable": "powershell",
       "followTheme": true,
       "name": "",
       "platforms": {
@@ -159,5 +160,9 @@
       },
       "type": "external"
     }
+  },
+  "defaultProfile": null,
+  "terminalOptions": {
+    "documentOverride": null
   }
 }
