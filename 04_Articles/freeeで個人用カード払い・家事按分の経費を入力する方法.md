@@ -5,7 +5,7 @@ tags:
   - freee
 source: https://gemini.google.com/app/09aeacd08f349c9c
 created: 2026-02-28 Sat 20:45
-updated: 2026-02-28 Sat 20:45
+updated: 2026-03-08 Sun 23:12
 ---
 
 # freeeで個人用カード払い・家事按分の経費を入力する方法

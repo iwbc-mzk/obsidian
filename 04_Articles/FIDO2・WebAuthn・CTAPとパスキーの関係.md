@@ -7,7 +7,7 @@ tags:
   - FIDO2
   - WebAuthn
 created: 2026-03-01
-updated: 2026-03-01 Sun 21:59
+updated: 2026-03-04 Wed 22:49
 ---
 
 # FIDO2・WebAuthn・CTAPとパスキーの関係
