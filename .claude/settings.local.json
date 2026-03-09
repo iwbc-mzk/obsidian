@@ -1,14 +1,14 @@
 {
-  "permissions": {
-    "allow": [
-      "Bash(head:*)",
-      "Skill(clip)",
-      "Bash(obsidian help:*)",
-      "Bash(where obsidian:*)",
-      "Bash(cmd:*)",
-      "Bash(ls -d \"C:\\\\Users\\\\iwbc_\\\\OneDrive\\\\Documents\\\\github\\\\obsidian\"/04_Article*)",
-      "Bash(obsidian eval:*)",
-      "Bash(obsidian read:*)"
-    ]
-  }
+    "permissions": {
+        "allow": [
+            "Bash(head:*)",
+            "Skill(clip)",
+            "Bash(obsidian help:*)",
+            "Bash(where obsidian:*)",
+            "Bash(cmd:*)",
+            "Bash(obsidian eval:*)",
+            "Bash(obsidian read:*)",
+            "WebFetch(domain:*)"
+        ]
+    }
 }
