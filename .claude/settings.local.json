@@ -8,7 +8,8 @@
             "Bash(cmd:*)",
             "Bash(obsidian eval:*)",
             "Bash(obsidian read:*)",
-            "WebFetch(domain:*)"
+            "WebFetch(domain:*)",
+            "Bash(rm *\\obsidian\\Clippings\\*)"
         ]
     }
 }
