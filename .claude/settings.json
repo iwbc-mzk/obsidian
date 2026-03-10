@@ -15,8 +15,7 @@
             "Bash(python *)",
             "Bash(cp * *)",
             "Bash(mv * *)",
-            "Bash(mkdir **)",
-            "Bash(rm *\\obsidian\\**)"
+            "Bash(mkdir *)"
         ],
         "deny": [
             "Bash(rm -rf *)",

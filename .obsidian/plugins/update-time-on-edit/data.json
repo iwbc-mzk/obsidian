@@ -190,12 +190,14 @@
     "04_Articles/素数判定.md": "1965e35262934ddeaf2db16f4a651dd269103db4e062de5892c30f7d4d63897d",
     "04_Articles/素因数分解.md": "9aec980adc3fe8183b1bed890ed830e74f0859b48527d5f67b2e233cbbc80f2f",
     "04_Articles/MCPのアーキテクチャとコンポーネント構成.md": "5a364f0c1e6dd42cdfe6d83730c15b34c52b5669d37a85b148b20fb941652606",
-    "04_Article/自転車の定義と種類（道路交通法）.md": "bf349fbcf3a36c86b8c373830632ec004102be60cf1c42b655044a58c58c0060",
-    "04_Article/自転車の道路通行方法.md": "7bb4c1a2a914d1da5b8575bd9a8f45212f236c2b611f096954765b5b85303549",
-    "04_Article/自転車の交差点・横断・停止ルール.md": "1524595af92bc00e40da6b50ff50cc0cae00a11f007a5ee7fc507b4362825338",
     "04_Articles/F値と絞りの基本.md": "83fece578d5aae49b9478db47a3f2206c7884dcce11f8b93ffd5e8b12be64e2c",
     "04_Articles/絞りと画質向上の仕組み（収差・口径食）.md": "0d4724a72463197a1a53d0e6baaad9a0d988d47f429eb18d9c1a9c1bbfc0a269",
     "04_Articles/被写界深度とF値の関係.md": "d0a016ccd6090cb6994ead252a59ac7670d48d7f06736ae760e51af50917140f",
-    "04_Articles/回折現象と小絞りボケ.md": "f9a7c7f5431c8bce74ab421c86472215e7bb3b5056ec222ffbedb0d285696e16"
+    "04_Articles/回折現象と小絞りボケ.md": "f9a7c7f5431c8bce74ab421c86472215e7bb3b5056ec222ffbedb0d285696e16",
+    "04_Articles/自転車の道路通行方法.md": "7bb4c1a2a914d1da5b8575bd9a8f45212f236c2b611f096954765b5b85303549",
+    "04_Articles/自転車の交差点・横断・停止ルール.md": "1524595af92bc00e40da6b50ff50cc0cae00a11f007a5ee7fc507b4362825338",
+    "04_Articles/自転車の定義と種類（道路交通法）.md": "bf349fbcf3a36c86b8c373830632ec004102be60cf1c42b655044a58c58c0060",
+    "04_Articles/Pythonのargparse設計パターン - get_args・main・logicの分離.md": "d6be6a1a06bc99eca6e2c96b6f86499cedbdc40c80aa6ccfe8dfdfbad8fe87c0",
+    "04_Articles/vars(args)でargparseのNamespaceを辞書にアンパックする.md": "8ae02f48ede86cb27b8a98be82a6f70a6870350dbd627b15f961cfc7d99a9bc2"
   }
 }

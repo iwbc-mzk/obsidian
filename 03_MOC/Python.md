@@ -2,11 +2,19 @@
 <!-- SerializedQuery: LIST FROM "04_Articles" where contains(tags, "Python") SORT file.title ASC -->
 - [[int ⇔ str の相互変換時の桁上限]]
 - [[ord()とchr()]]
+- [[PytesseractのTesseractNotFoundError解決方法]]
 - [[poetryの仮想環境作成パスをプロジェクト直下に設定する方法]]
 - [[インデックスとリストの値を同時に変更する際の注意点]]
-- [[PytesseractのTesseractNotFoundError解決方法]]
+- [[Pythonのargparse設計パターン - get_args・main・logicの分離]]
+- [[vars(args)でargparseのNamespaceを辞書にアンパックする]]
+
 <!-- SerializedQuery END -->
 
 ## OCR
 
 - [[PytesseractのTesseractNotFoundError解決方法]]
+
+## CLI / argparse
+
+- [[Pythonのargparse設計パターン - get_args・main・logicの分離]]
+- [[vars(args)でargparseのNamespaceを辞書にアンパックする]]
