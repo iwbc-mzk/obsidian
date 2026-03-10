@@ -6,3 +6,4 @@
 .obsidian/plugins/obsidian-book-search-plugin/data.json
 .tmp.*
 mkdocs.yml
+tmp/

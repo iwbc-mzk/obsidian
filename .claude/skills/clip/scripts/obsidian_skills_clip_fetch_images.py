@@ -41,9 +41,9 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 
-DEFAULT_OUTPUT     = "/tmp/clipping_images/images.json"
-DEFAULT_MAX_IMAGES = 30
-DEFAULT_TIMEOUT    = 10
+DEFAULT_OUTPUT = "/tmp/clipping_images/images.json"
+DEFAULT_MAX_IMAGES = 50
+DEFAULT_TIMEOUT = 10
 
 
 def extract_images_from_markdown(md_text: str) -> list[dict]:
@@ -53,7 +53,7 @@ def extract_images_from_markdown(md_text: str) -> list[dict]:
     """
     lines = md_text.splitlines()
     images = []
-    pattern = re.compile(r'!\[([^\]]*)\]\((https?://[^\)]+)\)')
+    pattern = re.compile(r"!\[([^\]]*)\]\((https?://[^\s\)]+)")
 
     for i, line in enumerate(lines):
         for match in pattern.finditer(line):
@@ -61,20 +61,24 @@ def extract_images_from_markdown(md_text: str) -> list[dict]:
             url = match.group(2).strip()
 
             before_lines = [
-                l.strip() for l in lines[max(0, i-3):i]
-                if l.strip() and not l.strip().startswith('!')
+                l.strip()
+                for l in lines[max(0, i - 3) : i]
+                if l.strip() and not l.strip().startswith("!")
             ]
             after_lines = [
-                l.strip() for l in lines[i+1:min(len(lines), i+4)]
-                if l.strip() and not l.strip().startswith('!')
+                l.strip()
+                for l in lines[i + 1 : min(len(lines), i + 4)]
+                if l.strip() and not l.strip().startswith("!")
             ]
 
-            images.append({
-                "url":            url,
-                "alt":            alt,
-                "context_before": " ".join(before_lines[-2:]),
-                "context_after":  " ".join(after_lines[:2]),
-            })
+            images.append(
+                {
+                    "url": url,
+                    "alt": alt,
+                    "context_before": " ".join(before_lines[-2:]),
+                    "context_after": " ".join(after_lines[:2]),
+                }
+            )
 
     return images
 
@@ -106,8 +110,7 @@ def download_image(url: str, dest_path: Path, timeout: int) -> tuple:
     """
     try:
         req = urllib.request.Request(
-            url,
-            headers={"User-Agent": "Mozilla/5.0 (compatible; ImageFetcher/1.0)"}
+            url, headers={"User-Agent": "Mozilla/5.0 (compatible; ImageFetcher/1.0)"}
         )
         with urllib.request.urlopen(req, timeout=timeout) as response:
             content_type = response.headers.get("Content-Type", "")
@@ -117,8 +120,8 @@ def download_image(url: str, dest_path: Path, timeout: int) -> tuple:
 
         ext_map = {
             "image/jpeg": ".jpg",
-            "image/png":  ".png",
-            "image/gif":  ".gif",
+            "image/png": ".png",
+            "image/gif": ".gif",
             "image/webp": ".webp",
         }
         dest_path = dest_path.with_suffix(ext_map.get(media_type, ".jpg"))
@@ -151,21 +154,24 @@ def build_parser() -> argparse.ArgumentParser:
         help="処理対象のMarkdownファイルパス",
     )
     parser.add_argument(
-        "--output", "-o",
+        "--output",
+        "-o",
         metavar="OUTPUT_JSON",
         type=Path,
         default=Path(DEFAULT_OUTPUT),
         help=f"出力JSONファイルパス（画像はJSONと同じフォルダの files/ に保存） (デフォルト: {DEFAULT_OUTPUT})",
     )
     parser.add_argument(
-        "--max-images", "-n",
+        "--max-images",
+        "-n",
         metavar="N",
         type=int,
         default=DEFAULT_MAX_IMAGES,
         help=f"取得する最大画像数・トークン節約のため上限を設ける (デフォルト: {DEFAULT_MAX_IMAGES})",
     )
     parser.add_argument(
-        "--timeout", "-t",
+        "--timeout",
+        "-t",
         metavar="SECONDS",
         type=int,
         default=DEFAULT_TIMEOUT,
@@ -178,10 +184,10 @@ def main():
     parser = build_parser()
     args = parser.parse_args()
 
-    md_path: Path     = args.markdown
+    md_path: Path = args.markdown
     output_file: Path = args.output
-    max_images: int   = args.max_images
-    timeout: int      = args.timeout
+    max_images: int = args.max_images
+    timeout: int = args.timeout
 
     if not md_path.exists():
         parser.error(f"ファイルが見つかりません: {md_path}")
@@ -196,7 +202,9 @@ def main():
 
     if not images_meta:
         print("画像URLが見つかりませんでした。")
-        output_file.write_text(json.dumps([], ensure_ascii=False, indent=2), encoding="utf-8")
+        output_file.write_text(
+            json.dumps([], ensure_ascii=False, indent=2), encoding="utf-8"
+        )
         sys.exit(0)
 
     print(f"画像を {len(images_meta)} 件検出。最大 {max_images} 件を処理します。")
@@ -212,30 +220,33 @@ def main():
         saved_path, media_type = download_image(url, dest_path, timeout)
 
         if saved_path:
-            results.append({
-                "url":            url,
-                "alt":            meta["alt"],
-                "media_type":     media_type,
-                "local_path":     str(saved_path),
-                "context_before": meta["context_before"],
-                "context_after":  meta["context_after"],
-            })
+            results.append(
+                {
+                    "url": url,
+                    "alt": meta["alt"],
+                    "media_type": media_type,
+                    "local_path": str(saved_path),
+                    "context_before": meta["context_before"],
+                    "context_after": meta["context_after"],
+                }
+            )
             print(f"         OK -> {saved_path.name} ({media_type})")
         else:
             # 取得失敗してもメタ情報だけ残す
-            results.append({
-                "url":            url,
-                "alt":            meta["alt"],
-                "media_type":     None,
-                "local_path":     None,
-                "context_before": meta["context_before"],
-                "context_after":  meta["context_after"],
-                "error":          "fetch_failed",
-            })
+            results.append(
+                {
+                    "url": url,
+                    "alt": meta["alt"],
+                    "media_type": None,
+                    "local_path": None,
+                    "context_before": meta["context_before"],
+                    "context_after": meta["context_after"],
+                    "error": "fetch_failed",
+                }
+            )
 
     output_file.write_text(
-        json.dumps(results, ensure_ascii=False, indent=2),
-        encoding="utf-8"
+        json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     success = sum(1 for r in results if r.get("local_path"))
     print(f"\n完了: {success}/{len(results)} 件取得 -> {output_file}")

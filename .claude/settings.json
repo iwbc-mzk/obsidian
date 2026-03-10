@@ -1,6 +1,9 @@
 {
     "permissions": {
         "allow": [
+            "Edit",
+            "Write",
+            "Read",
             "Bash(head:*)",
             "Skill(clip)",
             "Bash(obsidian help:*)",
@@ -9,23 +12,17 @@
             "Bash(obsidian eval:*)",
             "Bash(obsidian read:*)",
             "WebFetch(domain:*)",
-            "Bash(python *obsidian_skills_clip_fetch_images.py*)",
-            "Bash(cp */obsidian/.claude/skills/clip/scripts/tmp/files/* */obsidian/01_Assets/*)",
-            "Bash(mv */obsidian/Clippings/* */obsidian/Clippings/*)",
-            "Bash(rm -rf */obsidian/.claude/skills/clip/scripts/tmp/*)"
+            "Bash(python *)",
+            "Bash(cp * *)",
+            "Bash(mv * *)",
+            "Bash(mkdir **)",
+            "Bash(rm *\\obsidian\\**)"
+        ],
+        "deny": [
+            "Bash(rm -rf *)",
+            "Bash(sudo *)",
+            "Read(**/.env*)",
+            "Bash(format *)"
         ]
-    },
-    "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node -e \"const cmd=process.env.CLAUDE_TOOL_INPUT_COMMAND||''; process.exit(cmd.includes('obsidian_skills_clip_fetch_images.py')?0:1);\""
-          }
-        ]
-      }
-    ]
-  }
+    }
 }
