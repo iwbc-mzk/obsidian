@@ -1,0 +1,31 @@
+{
+    "permissions": {
+        "allow": [
+            "Bash(head:*)",
+            "Skill(clip)",
+            "Bash(obsidian help:*)",
+            "Bash(where obsidian:*)",
+            "Bash(cmd:*)",
+            "Bash(obsidian eval:*)",
+            "Bash(obsidian read:*)",
+            "WebFetch(domain:*)",
+            "Bash(python *obsidian_skills_clip_fetch_images.py*)",
+            "Bash(cp */obsidian/.claude/skills/clip/scripts/tmp/files/* */obsidian/01_Assets/*)",
+            "Bash(mv */obsidian/Clippings/* */obsidian/Clippings/*)",
+            "Bash(rm -rf */obsidian/.claude/skills/clip/scripts/tmp/*)"
+        ]
+    },
+    "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"const cmd=process.env.CLAUDE_TOOL_INPUT_COMMAND||''; process.exit(cmd.includes('obsidian_skills_clip_fetch_images.py')?0:1);\""
+          }
+        ]
+      }
+    ]
+  }
+}
