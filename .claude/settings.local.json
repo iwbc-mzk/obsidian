@@ -9,7 +9,8 @@
             "Bash(obsidian eval:*)",
             "Bash(obsidian read:*)",
             "WebFetch(domain:*)",
-            "Bash(rm *\\obsidian\\Clippings\\*)"
+            "Bash(python *fetch_images.py *)",
+            "Bash(rm -rf *obsidian/.claude/skills/clip/scripts/tmp*)"
         ]
     }
 }

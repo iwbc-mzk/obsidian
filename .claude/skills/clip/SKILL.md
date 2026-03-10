@@ -5,10 +5,6 @@ allowed-tools:
   - Read
   - Write
   - Glob
-  - Bash(mkdir *\\obsidian\\*)
-  - Bash(mv *\\obsidian\\* *\\obsidian\\*)
-  - Bash(ls *)
-  - Bash(rm *\\obsidian\\Clippings\\*)
 ---
 
 # Web Clip 記事整理スキル
@@ -18,10 +14,14 @@ Obsidian Web Clipperで保存されたMarkdown記事を読み取り、
 
 ## パス設定
 
+各パスはプロジェクトのルートからの相対パスで指定する。
+
 - **入力元**: `./Clippings`
 - **整理先**: `./04_Articles`
 - **カテゴリ分類先**: `./03_MOC`
 - **画像保存先**: `./01_Assets`
+- **画像取得スクリプト**: `./.claude/skills/clip/scripts/fetch_images.py`
+- **画像一時保存パス**: `./.claude/skills/clip/scripts/tmp`
 
 ## ワークフロー
 
@@ -36,16 +36,14 @@ Obsidian Web Clipperで保存されたMarkdown記事を読み取り、
 
 mdファイルを読み取り、内容を解析する。
 
-画像URLがある場合は以下に従い、画像の情報を取得する。
+画像ファイルは`Bash`で以下スクリプトを実行して画像を一時ファイルに保存する。
 
-- frontmatterの `source:` URLを確認する
-- `WebFetch` で元記事URLにアクセスし、HTMLを取得する
-- HTMLから以下の情報を抽出する：
-  - `<img>` タグの `alt` 属性・`title` 属性
-  - 画像の直前・直後にある `<figcaption>` やキャプションテキスト
-  - 画像を囲む `<figure>` や `<section>` の文脈
-- Markdownの `![altテキスト](URL)` とHTMLの画像情報を対応付ける
-- altテキストが空の画像は、URLのファイル名（例: `23_15_15.png`）と周辺テキストから内容を推測する
+```Bash
+  python3 <画像取得スクリプトのパス> "<markdownファイルのパス>"　--output "<画像一時保存パス>"
+```
+
+- スクリプトは画像をbase64エンコードして`<画像一時保存パス>`に保存する
+- 保存された画像ファイルを `Read` ツールで読み込み、内容を分析する
 
 ### 3. ファイル内容の整理と記事分割
 
