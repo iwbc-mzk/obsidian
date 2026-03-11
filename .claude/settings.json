@@ -12,13 +12,13 @@
             "Bash(obsidian eval:*)",
             "Bash(obsidian read:*)",
             "WebFetch(domain:*)",
-            "Bash(python *)",
-            "Bash(cp * *)",
-            "Bash(mv * *)",
-            "Bash(mkdir *)",
+            "Bash(python **)",
+            "Bash(cp ** **)",
+            "Bash(mv ** **)",
+            "Bash(mkdir **)",
             // rmとrmdirのチェックはフックで行うため、ここでは許可する
-            "Bash(rm *)",
-            "Bash(rmdir *)"
+            "Bash(rm **)",
+            "Bash(rmdir **)"
         ],
         "deny": [
             "Bash(sudo *)",

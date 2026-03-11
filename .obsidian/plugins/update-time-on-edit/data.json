@@ -200,6 +200,9 @@
     "04_Articles/Pythonのargparse設計パターン - get_args・main・logicの分離.md": "d6be6a1a06bc99eca6e2c96b6f86499cedbdc40c80aa6ccfe8dfdfbad8fe87c0",
     "04_Articles/vars(args)でargparseのNamespaceを辞書にアンパックする.md": "0266ac84c1b7bb04f21c2cd0f15312b6b1d8bc3424c2772783c718fa3bd164aa",
     "04_Articles/Claude Code HooksのPreToolUseとPermissionRequestの違い.md": "2705cf574bd4455b434e2727b20a5f99164c6332965d4b4ea2f7fc5a442327a2",
-    "04_Articles/Claude Codeのパーミッション評価フローとダイアログ表示条件.md": "b2f442b0a1313eec931e6ee635c7b862664de73a2d97389aa464447419f620a5"
+    "04_Articles/Claude Codeのパーミッション評価フローとダイアログ表示条件.md": "b2f442b0a1313eec931e6ee635c7b862664de73a2d97389aa464447419f620a5",
+    "04_Articles/動的計画法の最適解復元.md": "ae7d9def7014f79652231586ed315548b90e4f686360ab284eebb7aafad0c56e",
+    "04_Articles/BFSによる経路復元.md": "5daa26009c50eaf88eb19bdce258dcd9bfbc9c0f4a43b359588226524980f4f2",
+    "04_Articles/ナップサック問題の最適解復元.md": "dc83ddb39dca4d528dd0bf615c5566b58d9415f7d67969d27a5687837e7ae12e"
   }
 }
