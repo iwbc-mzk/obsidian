@@ -8,3 +8,4 @@
 mkdocs.yml
 tmp/
 .claude/logs/
+*.pyc
