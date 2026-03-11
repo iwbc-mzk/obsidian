@@ -20,6 +20,7 @@ Obsidian Web Clipperで保存されたMarkdown記事を読み取り、
 - **入力元**: `./Clippings`
 - **整理先**: `./04_Articles`
 - **カテゴリ分類先**: `./03_MOC`
+- **インデックスファイル**: `./00_Index/Index.md`
 - **画像保存先**: `./01_Assets`
 - **画像取得スクリプト**: `./.claude/skills/clip/scripts/obsidian_skills_clip_fetch_images.py`
 - **画像メタ情報保存パス**: `./.tmp/images.json`
@@ -130,6 +131,11 @@ Obsidian Web Clipperで保存されたMarkdown記事を読み取り、
 python <Tmpフォルダ削除スクリプト> <画像情報保存パス>
 ```
 
-### 6. 処理結果レポート
+### 6. Indexファイルの更新
+
+- `カテゴリ分類先`に更新があった場合は`インデックスファイル`を更新する。
+  - `インデックスファイル`はDataViewクエリで`カテゴリ分類先`の内容を反映する。
+
+### 7. 処理結果レポート
 
 整理結果をテーブル形式で表示する。
