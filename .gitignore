@@ -7,3 +7,4 @@
 .tmp.*
 mkdocs.yml
 tmp/
+.claude/logs/

@@ -1,0 +1,20 @@
+{
+    "protected_paths": [
+        ".git",
+        ".claude",
+        ".obsidian",
+        ".github",
+        ".mkdocs",
+        "CLAUDE.md",
+        "mkdocs.yml",
+        "pyproject.toml",
+        "poetry.lock",
+        "00_Index",
+        "01_Assets",
+        "02_Daily",
+        "03_MOC",
+        "04_Articles",
+        "05_Templates",
+        "06_ReadingNotes"
+    ]
+}
