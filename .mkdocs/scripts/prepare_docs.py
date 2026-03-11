@@ -97,13 +97,21 @@ def main(output_dir: str):
                 shutil.copy(cname_path, output_dir)
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
+def get_args():
+    parser = argparse.ArgumentParser(
+        prog="prepare_docs.py",
+        description="MkDocs用のドキュメントを準備するスクリプト",
+    )
     parser.add_argument(
         "--local",
         help="ローカル試験用。.mkdocs配下にdocsフォルダを作成する。",
         action="store_true",
     )
-    args = parser.parse_args()
+
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = get_args()
     output_dir: str = f"{PREFERENCE_DIR}/{DOCKS_DIR}" if args.local else DOCKS_DIR
     main(output_dir)

@@ -4,6 +4,11 @@
 - [[業務の繰り返しパターンをClaude Code Skillで可視化・自動化する]]
 - [[Obsidian Web ClipperとClaude Code Skillで技術記事を自動整理する]]
 
+## Hooks / パーミッション
+
+- [[Claude Code HooksのPreToolUseとPermissionRequestの違い]]
+- [[Claude Codeのパーミッション評価フローとダイアログ表示条件]]
+
 ## MCP アーキテクチャ
 
 - [[MCPの概要とNxM問題]]

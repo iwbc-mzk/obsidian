@@ -78,6 +78,8 @@ Obsidian Web Clipperで保存されたMarkdown記事を読み取り、
   - URLのドメインが以下の場合は、URLを記載せず「`引用元: サービス名`」（例： `引用元: NotebookLM`）と記載する
     - `notebooklm.google.com`
     - `gemini.google.com`
+    - `claude.ai`
+    - `chatgpt.com`
   - URLがない場合は記載しない
   - 記事本文の最後に「`引用元: [元記事タイトル](URL)`」の形式で記載する(例: `引用元: [引用元記事タイトル](https://example.com/article)`)
   - Sourceタグにも元ファイルのSourceタグのURLを記載する

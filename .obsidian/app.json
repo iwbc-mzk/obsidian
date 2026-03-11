@@ -4,9 +4,12 @@
   "attachmentFolderPath": "01_Assets",
   "newFileLocation": "folder",
   "newFileFolderPath": "04_Article",
-  "userIgnoreFilters": null,
+  "userIgnoreFilters": [
+    "CLAUDE"
+  ],
   "promptDelete": false,
   "showInlineTitle": true,
   "showLineNumber": false,
-  "rightToLeft": false
+  "rightToLeft": false,
+  "deleteUnlinkedAttachments": "always"
 }
