@@ -16,7 +16,8 @@
             "Bash(cp ** **)",
             "Bash(mv ** **)",
             "Bash(mkdir **)",
-            // rmとrmdirのチェックはフックで行うため、ここでは許可する
+            
+            "__Comment__: rm, rmdirはHookでガードするためここでは許可する",
             "Bash(rm **)",
             "Bash(rmdir **)"
         ],

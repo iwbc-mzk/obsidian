@@ -22,10 +22,10 @@ Obsidian Web Clipperで保存されたMarkdown記事を読み取り、
 - **カテゴリ分類先**: `./03_MOC`
 - **インデックスファイル**: `./00_Index/Index.md`
 - **画像保存先**: `./01_Assets`
-- **画像取得スクリプト**: `./.claude/skills/clip/scripts/obsidian_skills_clip_fetch_images.py`
+- **画像取得スクリプト**: `./.claude/skills/scripts/obsidian_skills_clip_fetch_images.py`
 - **画像メタ情報保存パス**: `./.tmp/images.json`
 - **画像情報保存パス**: `./.tmp/`
-- **Tmpフォルダ削除スクリプト**: `./.claude/skills/clip/scripts/remove_dir.py`
+- **削除スクリプト**: `./.claude/scripts/vault_rm.py`
 
 ## ワークフロー
 
@@ -59,6 +59,10 @@ Obsidian Web Clipperで保存されたMarkdown記事を読み取り、
 #### 分割基準
 
 - 内容を精査しZettelkasten方式で記事を分割する
+  - 1つの記事は1つの概念・トピックに焦点を当てる
+  - 記事の内容が複数の概念・トピックを含む場合は、内容を分割して複数の記事にする
+  - 分割の際は、内容のまとまりや自然な区切りを考慮する
+  - 分割した記事の内容が既存の記事と重複しないように注意する
 - 分割した記事の内容が既存の記事(整理先フォルダの他ファイル)と重複していないか確認する（重複している場合は、既存の記事に内容を統合するか、分割した記事を削除する）
 
 #### 記事内容
@@ -125,8 +129,14 @@ Obsidian Web Clipperで保存されたMarkdown記事を読み取り、
 
 ### 5. Clip記事の削除
 
+`Bash` で `削除スクリプト` を実行する。
+
+```bash
+python <削除スクリプトのパス> "<mdファイルのパス>"
+```
+
 - 整理が完了したら、`入力元`フォルダ内の元のmdファイルを削除する。
-- 画像解析を実行した場合は、`画像情報保存パス` のフォルダを削除する。
+- 画像解析を実行した場合は、`画像情報保存パス` のフォルダも削除する。
 
 ### 6. Indexファイルの更新
 

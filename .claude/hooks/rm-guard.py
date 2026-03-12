@@ -19,28 +19,27 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-# .claude/hooks/rm-guard.py -> .claude/ -> vault root
-VAULT_ROOT = Path(__file__).parent.parent.parent.resolve()
-CONFIG_FILE = VAULT_ROOT / ".claude" / "rm-guard.json"
+# vault_guard モジュールをロード (同じディレクトリに配置)
+sys.path.insert(0, str(Path(__file__).parent))
+from vault_guard import (
+    VAULT_ROOT,
+    CONFIG_FILE,
+    load_config,
+    normalize_path,
+    is_within_vault,
+    find_protected,
+    check_path,
+)
+
 LOG_FILE = VAULT_ROOT / ".claude" / "logs" / "rm-guard.log"
 
 CONTROLLED_COMMANDS = {"rm", "rmdir", "mv"}
 
 
 # ---------------------------------------------------------------------------
-# Config
-# ---------------------------------------------------------------------------
-
-def load_config() -> dict:
-    if CONFIG_FILE.exists():
-        with open(CONFIG_FILE, encoding="utf-8") as f:
-            return json.load(f)
-    return {"protected_paths": []}
-
-
-# ---------------------------------------------------------------------------
 # Logging
 # ---------------------------------------------------------------------------
+
 
 def log_blocked(command: str, reason: str) -> None:
     LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -50,64 +49,9 @@ def log_blocked(command: str, reason: str) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Path utilities
-# ---------------------------------------------------------------------------
-
-def normalize_path(path_str: str) -> Path | None:
-    """パス文字列を絶対 Windows Path に変換する。
-
-    対応形式:
-      - 通常の Windows パス (C:/... or C:\\...)
-      - Git Bash パス (/c/Users/...)
-      - ホームディレクトリ (~/)
-      - 相対パス (vault root を基点に解決)
-    """
-    if not path_str or path_str.startswith("-"):
-        return None
-
-    # Git Bash drive path: /c/Users/... -> C:/Users/...
-    m = re.match(r"^/([a-zA-Z])(/|$)(.*)", path_str)
-    if m:
-        drive = m.group(1).upper()
-        rest = m.group(3)
-        path_str = f"{drive}:/{rest}"
-
-    # Home directory
-    if path_str.startswith("~/"):
-        path_str = str(Path.home()) + path_str[1:]
-
-    try:
-        path = Path(path_str)
-        if not path.is_absolute():
-            path = VAULT_ROOT / path
-        return path.resolve()
-    except Exception:
-        return None
-
-
-def is_within_vault(path: Path) -> bool:
-    try:
-        path.relative_to(VAULT_ROOT)
-        return True
-    except ValueError:
-        return False
-
-
-def find_protected(path: Path, protected_paths: list[str]) -> str | None:
-    """path が protected_paths のいずれかに該当すれば、一致した設定パスを返す。"""
-    for entry in protected_paths:
-        protected = (VAULT_ROOT / entry).resolve()
-        try:
-            if path == protected or path.is_relative_to(protected):
-                return entry
-        except Exception:
-            pass
-    return None
-
-
-# ---------------------------------------------------------------------------
 # Command parsing
 # ---------------------------------------------------------------------------
+
 
 def split_compound_command(command: str) -> list[list[str]]:
     """&&, ||, ;, |, 改行 で区切られた複合コマンドを分解してトークンリストにする。"""
@@ -165,14 +109,9 @@ def check_parts(parts: list[str], protected_paths: list[str]) -> str | None:
     else:
         # rm / rmdir: 全ターゲットをチェック
         for target_str in targets:
-            target = normalize_path(target_str)
-            if target is None:
-                return f"パスを解析できませんでした: '{target_str}'"
-            if not is_within_vault(target):
-                return f"削除対象 '{target_str}' が vault 外のパスです"
-            hit = find_protected(target, protected_paths)
-            if hit:
-                return f"削除対象 '{target_str}' は保護されたパスです (設定: {hit})"
+            reason = check_path(target_str, protected_paths)
+            if reason:
+                return reason
 
     return None
 
@@ -180,6 +119,7 @@ def check_parts(parts: list[str], protected_paths: list[str]) -> str | None:
 # ---------------------------------------------------------------------------
 # Entry point
 # ---------------------------------------------------------------------------
+
 
 def main() -> None:
     # Windows では stdout が cp932 になるため UTF-8 に固定する
