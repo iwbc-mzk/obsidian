@@ -1,43 +1,45 @@
 {
-    "permissions": {
-        "allow": [
-            "Edit",
-            "Write",
-            "Read",
-            "Bash(head:*)",
-            "Skill(clip)",
-            "Bash(obsidian help:*)",
-            "Bash(where obsidian:*)",
-            "Bash(cmd:*)",
-            "Bash(obsidian eval:*)",
-            "Bash(obsidian read:*)",
-            "WebFetch(domain:*)",
-            "Bash(python **)",
-            "Bash(cp ** **)",
-            "Bash(mv ** **)",
-            "Bash(mkdir **)",
-            
-            "__Comment__: rm, rmdirはHookでガードするためここでは許可する",
-            "Bash(rm **)",
-            "Bash(rmdir **)"
-        ],
-        "deny": [
-            "Bash(sudo *)",
-            "Read(**/.env*)",
-            "Bash(format *)"
+  "permissions": {
+    "allow": [
+      "Edit",
+      "Write",
+      "Read",
+      "Bash(head:*)",
+      "Skill(clip)",
+      "Bash(obsidian help:*)",
+      "Bash(where obsidian:*)",
+      "Bash(cmd:*)",
+      "Bash(obsidian eval:*)",
+      "Bash(obsidian read:*)",
+      "WebFetch(domain:*)",
+      "Bash(python **)",
+      "Bash(cp ** **)",
+      "Bash(mv ** **)",
+      "Bash(mkdir **)",
+      "__Comment__: rm, rmdirはHookでガードするためここでは許可する",
+      "Bash(rm **)",
+      "Bash(rmdir **)"
+    ],
+    "deny": [
+      "Bash(sudo *)",
+      "Read(**/.env*)",
+      "Bash(format *)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python .claude/hooks/rm-guard.py"
+          }
         ]
-    },
-    "hooks": {
-        "PreToolUse": [
-            {
-                "matcher": "Bash",
-                "hooks": [
-                    {
-                        "type": "command",
-                        "command": "python .claude/hooks/rm-guard.py"
-                    }
-                ]
-            }
-        ]
-    }
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "obsidian@obsidian-skills": true
+  }
 }
