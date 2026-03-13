@@ -1,5 +1,5 @@
 ---
 tags:
-  - article
+  - moc
 slug: <% crypto.randomUUID() %>
 ---

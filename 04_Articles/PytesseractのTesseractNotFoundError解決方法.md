@@ -1,10 +1,11 @@
 ---
+slug: dbc235b2-8e79-409a-a70e-f7c2ef5cee9d
 tags:
   - article
   - Python
 source: https://stackoverflow.com/questions/50951955/pytesseract-tesseractnotfound-error-tesseract-is-not-installed-or-its-not-i
 created: 2026-02-28 Sat 20:44
-updated: 2026-02-28 Sat 20:44
+updated: 2026-03-13 Fri 14:31
 ---
 
 # PytesseractのTesseractNotFoundError解決方法

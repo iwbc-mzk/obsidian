@@ -1,10 +1,11 @@
 ---
+slug: 33378dc4-002a-490d-a82a-493f8b33cafd
 tags:
   - 2025-02-26
   - IT
 link: "[[2025-02-26]]"
 created: 2025-03-09 Sun 23:51
-updated: 2026-02-28 Sat 10:56
+updated: 2026-03-13 Fri 14:05
 ---
 vscode で launch.json を利用したデバッグ時に作業ディレクトリ (CWD) を指定する方法  
 => 設定の cwd に path を指定する  

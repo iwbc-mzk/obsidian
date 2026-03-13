@@ -1,4 +1,5 @@
 ---
+slug: 98d9c28b-ee62-456c-bc3a-00eb774b917c
 tags:
   - article
   - MCP
@@ -6,7 +7,7 @@ tags:
   - AIエージェント
   - アーキテクチャ
 created: 2026-03-03
-updated: 2026-03-03 Tue 23:34
+updated: 2026-03-13 Fri 14:31
 ---
 
 # MCPとRAGの比較とハイブリッドアーキテクチャ

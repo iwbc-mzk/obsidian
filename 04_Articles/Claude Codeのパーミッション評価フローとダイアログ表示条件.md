@@ -1,11 +1,12 @@
 ---
+slug: 1b0dc1f8-ac9c-4a1b-93fe-81a16f0ad740
 tags:
   - article
   - ClaudeCode
   - Hooks
 source: https://claude.ai/chat/2e45fdb9-e403-4b39-9002-ec6807b3fe1f
 created: 2026-03-11
-updated: 2026-03-11 Wed 22:52
+updated: 2026-03-13 Fri 14:05
 ---
 
 # Claude Codeのパーミッション評価フローとダイアログ表示条件

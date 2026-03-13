@@ -1,4 +1,5 @@
 ---
+slug: 39a4cde2-78f3-4b83-9946-8580797f5731
 tags:
   - article
   - 写真
@@ -6,7 +7,7 @@ tags:
   - レンズ光学
 source: https://tatsumo77.hatenablog.com/entry/2018/11/18/184642
 created: 2026-03-10 Tue 19:34
-updated: 2026-03-10 Tue 19:34
+updated: 2026-03-13 Fri 14:05
 ---
 
 ## F値とは

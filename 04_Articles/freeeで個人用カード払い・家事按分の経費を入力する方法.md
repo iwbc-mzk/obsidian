@@ -1,11 +1,12 @@
 ---
+slug: 11af843e-2dbe-4519-9ade-d69ee72db911
 tags:
   - article
   - 確定申告
   - freee
 source: https://gemini.google.com/app/09aeacd08f349c9c
 created: 2026-02-28 Sat 20:45
-updated: 2026-03-08 Sun 23:12
+updated: 2026-03-13 Fri 14:05
 ---
 
 # freeeで個人用カード払い・家事按分の経費を入力する方法

@@ -16,6 +16,7 @@ status: unread
 created: {{DATE:YYYY-MM-DD}}
 updated: 
 finished:
+slug: <% crypto.randomUUID() %>
 ---
 ![cover|150]({{coverUrl}})
 

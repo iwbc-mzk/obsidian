@@ -1,11 +1,12 @@
 ---
+slug: aa336452-73a6-4e93-9553-eb0128f76930
 tags:
   - article
   - 競技プログラミング
   - BFS
   - 動的計画法
 created: 2026-03-11
-updated: 2026-03-11 Wed 23:36
+updated: 2026-03-13 Fri 14:05
 source: https://qiita.com/drken/items/0c7bab0384438f285f93
 ---
 

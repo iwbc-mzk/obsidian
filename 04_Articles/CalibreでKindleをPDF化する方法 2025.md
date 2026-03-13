@@ -1,4 +1,5 @@
 ---
+slug: a5df0884-4530-4bf3-8535-75a38c35c3fc
 title: CalibreでKindleをPDF化する方法 2025
 source: https://qiita.com/NanakiOhashi-JP/items/c65d1abcf116288c632d
 author:
@@ -10,7 +11,7 @@ tags:
   - Tools
   - eBook
   - PDF
-updated: 2026-03-04 Wed 10:45
+updated: 2026-03-13 Fri 14:05
 ---
 
 ## Calibreを使ってKindleをPDF化する方法

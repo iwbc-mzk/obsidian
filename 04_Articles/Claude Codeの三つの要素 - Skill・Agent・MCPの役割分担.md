@@ -1,10 +1,11 @@
 ---
+slug: b3bd311b-6e7e-49f0-8996-5c1c4a33621f
 tags:
   - article
   - ClaudeCode
 source: https://qiita.com/WdknWdkn/items/351912f61ffe1b177a68
 created: 2026-02-28 Sat 12:14
-updated: 2026-02-28 Sat 12:17
+updated: 2026-03-13 Fri 14:17
 ---
 
 # Claude Codeの三つの要素 - Skill・Agent・MCPの役割分担

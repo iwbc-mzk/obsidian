@@ -1,3 +1,7 @@
+---
+slug: 6747bced-7538-4dbb-b551-d1ccb3a06bf5
+---
+
 ## Skill / Agent / MCP
 
 - [[Claude Codeの三つの要素 - Skill・Agent・MCPの役割分担]]

@@ -1,3 +1,9 @@
+---
+slug: 328554ca-1b63-41d8-87ba-b53555bc3d04
+created: 2025-01-25 Sat 20:54
+updated: 2026-03-13 Fri 14:05
+---
+
 # 6 章 堅牢な Web API を作る
 
 [[6.1 Web API を安全にする]]

@@ -29,6 +29,10 @@
     {
       "folder": "04_Article",
       "template": "05_Templates/Article.md"
+    },
+    {
+      "folder": "03_MOC",
+      "template": "05_Templates/MOC.md"
     }
   ],
   "enable_file_templates": false,

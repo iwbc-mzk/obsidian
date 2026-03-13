@@ -1,3 +1,7 @@
+---
+slug: 6f3c5c14-17dc-4539-bf79-798b3c74dfd2
+---
+
 ## プラグイン
 
 - [[ObsidianのTerminalプラグインでWindowsで別ウィンドウが開く問題の解決策]]

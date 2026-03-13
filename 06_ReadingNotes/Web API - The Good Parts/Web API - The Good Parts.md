@@ -1,6 +1,9 @@
 ---
+slug: 1e9eee41-b39b-450e-99b5-8213c3d441b5
 tags:
   - Book
+created: 2025-01-25 Sat 20:54
+updated: 2026-03-13 Fri 14:05
 ---
 
 [[3 章 レスポンスデータの設計]]

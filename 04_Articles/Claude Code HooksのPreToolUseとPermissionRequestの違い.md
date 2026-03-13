@@ -1,11 +1,12 @@
 ---
+slug: 0467ba8d-ec19-4633-a4e8-898ac5933cf4
 tags:
   - article
   - ClaudeCode
   - Hooks
 source: https://claude.ai/chat/2e45fdb9-e403-4b39-9002-ec6807b3fe1f
 created: 2026-03-11
-updated: 2026-03-11 Wed 22:54
+updated: 2026-03-13 Fri 14:05
 ---
 
 # Claude Code HooksのPreToolUseとPermissionRequestの違い

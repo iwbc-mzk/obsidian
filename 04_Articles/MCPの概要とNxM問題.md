@@ -1,11 +1,12 @@
 ---
+slug: a9612e4e-4f02-432b-afef-f40af32f78b9
 tags:
   - article
   - MCP
   - AIエージェント
   - LLM
 created: 2026-03-03
-updated: 2026-03-03 Tue 23:38
+updated: 2026-03-13 Fri 14:05
 ---
 
 # MCPの概要とNxM問題

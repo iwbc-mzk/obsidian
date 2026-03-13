@@ -1,11 +1,12 @@
 ---
+slug: e9873128-b567-4782-b417-a502270bed3e
 tags:
   - article
   - IT
   - Markdown
 source: https://qiita.com/h1na/items/d305d49b5a27e92d132a
 created: 2026-03-01
-updated: 2026-03-08 Sun 23:13
+updated: 2026-03-13 Fri 14:05
 ---
 
 # Markdownの参照スタイルリンク記法

@@ -1,10 +1,11 @@
 ---
+slug: 0ab21f90-ce25-4d35-95e9-31c4cbb4ee9d
 tags:
   - 2025-02-25
   - IT
 link: "[[2025-02-25]]"
 created: 2025-03-09 Sun 23:46
-updated: 2026-02-28 Sat 10:56
+updated: 2026-03-13 Fri 14:05
 ---
 
 1. vscode の拡張機能で PowerShell(Microsoft 純正拡張機能) をインストールする  

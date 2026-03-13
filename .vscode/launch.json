@@ -8,7 +8,7 @@
             "type": "PowerShell",
             "name": "Debug MKDocs",
             "request": "launch",
-            "script": "poetry run python .mkdocs/scripts/prepare_docs.py --local; cd .mkdocs; poetry run mkdocs serve --clean --open",
+            "script": "poetry run python .mkdocs/scripts/prepare_docs.py --local; cd .mkdocs; poetry run mkdocs build -d site --verbose --clean; poetry run mkdocs serve --clean --open",
             "cwd": "${workspaceFolder}"
         },
         {

@@ -1,11 +1,12 @@
 ---
+slug: 25c4dc97-8565-4294-9464-8635a45ead24
 tags:
   - article
   - ClaudeCode
   - Obsidian
 source: https://dev.classmethod.jp/articles/obsidian-claude-clip/
 created: 2026-02-28 Sat 12:15
-updated: 2026-02-28 Sat 12:17
+updated: 2026-03-13 Fri 14:05
 ---
 
 # Obsidian Web ClipperとClaude Code Skillで技術記事を自動整理する

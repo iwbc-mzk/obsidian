@@ -1,4 +1,5 @@
 ---
+slug: 27d8daed-59e8-496a-a66f-8c3110599b69
 tags:
   - article
   - 写真
@@ -6,7 +7,7 @@ tags:
   - レンズ光学
 source: https://tatsumo77.hatenablog.com/entry/2018/11/18/184642
 created: 2026-03-10 Tue 19:35
-updated: 2026-03-10 Tue 19:35
+updated: 2026-03-13 Fri 14:05
 ---
 
 ## 被写界深度とは

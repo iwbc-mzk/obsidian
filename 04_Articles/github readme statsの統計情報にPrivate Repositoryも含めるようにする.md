@@ -1,6 +1,7 @@
 ---
+slug: 630fc0d3-92e3-4796-b665-e3013ebcb3ea
 created: 2025-01-25 Sat 20:54
-updated: 2026-02-28 Sat 10:56
+updated: 2026-03-13 Fri 14:05
 ---
 1. リポジトリをフォークする。  
    https://github.com/anuraghazra/github-readme-stats

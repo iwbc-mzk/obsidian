@@ -1,4 +1,5 @@
 ---
+slug: 49b6fc63-a15f-45c1-b2b4-fff5b336e7a6
 tags:
   - article
   - セキュリティ
@@ -7,7 +8,7 @@ tags:
   - FIDO2
   - WebAuthn
 created: 2026-03-01
-updated: 2026-03-04 Wed 22:49
+updated: 2026-03-13 Fri 14:05
 ---
 
 # FIDO2・WebAuthn・CTAPとパスキーの関係

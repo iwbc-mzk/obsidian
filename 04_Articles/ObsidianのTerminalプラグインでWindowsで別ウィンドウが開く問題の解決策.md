@@ -1,10 +1,11 @@
 ---
+slug: 783eadd8-e4f0-4c6c-b04e-6ac90aa55ac9
 tags:
   - article
   - Obsidian
 source: https://qiita.com/saka-guti/items/547f46708e0213212879
 created: 2026-02-28 Sat 12:14
-updated: 2026-02-28 Sat 12:17
+updated: 2026-03-13 Fri 14:05
 ---
 
 # ObsidianのTerminalプラグインでWindowsで別ウィンドウが開く問題の解決策

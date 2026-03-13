@@ -1,4 +1,5 @@
 ---
+slug: 204ca1d7-b1e8-424c-a87e-b4172fc67747
 tags:
   - article
   - Python
@@ -6,7 +7,7 @@ tags:
   - CLI
 source:
 created: 2026-03-10 Tue 23:10
-updated: 2026-03-11 Wed 10:52
+updated: 2026-03-13 Fri 14:05
 ---
 
 ## 概要

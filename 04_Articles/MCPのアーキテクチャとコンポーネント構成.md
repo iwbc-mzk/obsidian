@@ -1,11 +1,12 @@
 ---
+slug: 0140e810-11ed-42b4-b03e-336c370060ce
 tags:
   - article
   - MCP
   - AIエージェント
   - アーキテクチャ
 created: 2026-03-03
-updated: 2026-03-09 Mon 23:58
+updated: 2026-03-13 Fri 14:05
 ---
 
 # MCPのアーキテクチャとコンポーネント構成

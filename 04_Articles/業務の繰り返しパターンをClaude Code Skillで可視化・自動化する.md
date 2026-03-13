@@ -1,10 +1,11 @@
 ---
+slug: 0888a5cc-d053-4cd9-bc88-c31b23e23f64
 tags:
   - article
   - ClaudeCode
 source: https://qiita.com/WdknWdkn/items/351912f61ffe1b177a68
 created: 2026-02-28 Sat 12:14
-updated: 2026-02-28 Sat 12:17
+updated: 2026-03-13 Fri 14:05
 ---
 
 # 業務の繰り返しパターンをClaude Code Skillで可視化・自動化する

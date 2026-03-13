@@ -1,4 +1,5 @@
 ---
+slug: effdc72b-da81-4f82-9c39-e94016e016e8
 tag:
   - Book
   - Clean_Architecture　達人に学ぶソフトウェアの構造と設計
@@ -19,7 +20,7 @@ isbn10:
 isbn13: PKEY:04893065A08153900000
 status: unread
 created: 2025-03-09
-updated: 2025-09-11 Thu 23:39
+updated: 2026-03-13 Fri 14:05
 finished:
 ---
 ![cover|150](http://books.google.com/books/content?id=1f9lDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api)

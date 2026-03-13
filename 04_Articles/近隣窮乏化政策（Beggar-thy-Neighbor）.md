@@ -1,9 +1,10 @@
 ---
+slug: c5ef5ec3-d3fe-4fb3-927b-f5358cba6a0e
 tags:
   - article
   - 経済学
 created: 2026-03-12 Thu 15:00
-updated: 2026-03-12 Thu 15:00
+updated: 2026-03-13 Fri 14:05
 ---
 
 # 近隣窮乏化政策（Beggar-thy-Neighbor）

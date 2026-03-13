@@ -1,11 +1,12 @@
 ---
+slug: 8d226c97-e287-425a-a1d0-e25cf8a67a22
 tags:
   - article
   - MCP
   - AIエージェント
   - セキュリティ
 created: 2026-03-03
-updated: 2026-03-04 Wed 10:45
+updated: 2026-03-13 Fri 14:05
 ---
 
 # MCPのセキュリティとAIエージェントの将来展望
