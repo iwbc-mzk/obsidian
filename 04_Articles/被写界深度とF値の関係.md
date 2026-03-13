@@ -7,7 +7,7 @@ tags:
   - レンズ光学
 source: https://tatsumo77.hatenablog.com/entry/2018/11/18/184642
 created: 2026-03-10 Tue 19:35
-updated: 2026-03-13 Fri 14:05
+updated: 2026-03-13 Fri 15:47
 ---
 
 ## 被写界深度とは
@@ -17,7 +17,7 @@ updated: 2026-03-13 Fri 14:05
 - 浅い被写界深度 → ピントが合う範囲が狭い（ボケやすい）
 - 深い被写界深度 → ピントが合う範囲が広い（全体にピントが合う）
 
-![被写界深度のイメージ](../01_Assets/camera_depth_of_field.png)
+![[camera_depth_of_field.png]]
 
 出典: [カメラの豆知識 ～絞りを絞ると画質向上したり、ピントが広い範囲に合う理由～](https://tatsumo77.hatenablog.com/entry/2018/11/18/184642)
 
@@ -33,15 +33,15 @@ F値が大きい（絞り込む）ほど被写界深度は深くなる。
 
 被写体Aにピントを合わせた場合：
 
-![被写体Aにピントを合わせた状態](../01_Assets/camera_focus_subject_a.png)
+![[camera_focus_subject_a.png]]
 
 被写体Bの光はフィルム面・撮像素子上で分散する（ボケる）：
 
-![絞りなしだとBがボケる](../01_Assets/camera_blur_without_stop.png)
+![[camera_blur_without_stop.png]]
 
 絞ることでレンズ周辺からの光がカットされ、分散が和らぐ：
 
-![絞るとBのボケが小さくなる](../01_Assets/camera_less_blur_with_stop.png)
+![[camera_less_blur_with_stop.png]]
 
 出典: [カメラの豆知識 ～絞りを絞ると画質向上したり、ピントが広い範囲に合う理由～](https://tatsumo77.hatenablog.com/entry/2018/11/18/184642)
 
