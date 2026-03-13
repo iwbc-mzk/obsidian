@@ -40,6 +40,7 @@
     ]
   },
   "enabledPlugins": {
-    "obsidian@obsidian-skills": true
+    "obsidian@obsidian-skills": true,
+    "claude-md-management@claude-plugins-official": true
   }
 }

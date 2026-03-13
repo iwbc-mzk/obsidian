@@ -1,6 +1,6 @@
 ---
 created: 2026-02-28 Sat 10:45
-updated: 2026-03-04 Wed 21:18
+updated: 2026-03-13 Fri 21:17
 ---
 # CLAUDE.md
 
@@ -33,7 +33,7 @@ mkdocs gh-deploy
 
 ### Publishing Pipeline
 
-1. **Source**: Obsidian markdown files in `02_Daily/`, `03_MOC/`, `04_Article/`, `06_ReadingNotes/`
+1. **Source**: Obsidian markdown files in `02_Daily/`, `03_MOC/`, `04_Articles/`, `06_ReadingNotes/`
 2. **Transform**: `.mkdocs/scripts/prepare_docs.py` converts Obsidian syntax to standard Markdown:
    - Converts `![[image]]` wiki-link embeds → standard `![](path)` format
    - Strips Obsidian image size specs (e.g., `|400`)
@@ -49,7 +49,7 @@ mkdocs gh-deploy
 | `01_Assets/` | All images and attachments (configured as attachment folder) |
 | `02_Daily/` | Daily notes and weekly summaries |
 | `03_MOC/` | Maps of Content (topic hubs) |
-| `04_Article/` | Main knowledge base articles (default new file location) |
+| `04_Articles/` | Main knowledge base articles (default new file location) |
 | `05_Templates/` | Note templates |
 | `06_ReadingNotes/` | Structured book reading notes |
 | `Clippings/` | Web clippings (not published) |
@@ -60,8 +60,17 @@ mkdocs gh-deploy
 - `mkdocs.yml` — Site config: Material theme, MathJax/KaTeX, Mermaid, Google Analytics
 - `.mkdocs/conf.yml` — Controls which folders are included in the published site
 - `.mkdocs/scripts/prepare_docs.py` — Content transformation script
+- `.mkdocs/scripts/add_uuids.py` — Bulk-adds UUID `slug` frontmatter to articles in `03_MOC/`, `04_Articles/`, `06_ReadingNotes/`; run when adding new articles to ensure stable published URLs
 - `pyproject.toml` — Python dependencies (poetry): mkdocs-material, mkdocs-roamlinks-plugin, mkdocs-callouts, pyyaml
 - `.gitignore` — Excludes `.mkdocs/site/`, `.mkdocs/docs/` (generated), `.venv/`, workspace state
+
+### Stable URLs (Slug System)
+
+Articles use a `slug` frontmatter field (UUID) to generate stable published URLs independent of filename. Run `add_uuids.py` after creating new articles:
+
+```bash
+python .mkdocs/scripts/add_uuids.py
+```
 
 ### Git Workflow
 
@@ -79,4 +88,4 @@ Commits are vault backups with the format `vault backup: YYYY-MM-DD HH:MM:SS`. T
 
 
 ### Obsidian CLI
-Obsidian Valut内のファイル検索や操作はObsidian CLIを利用する
+Obsidian Vault内のファイル検索や操作はObsidian CLIを利用する（`/obsidian-cli` スキル）
