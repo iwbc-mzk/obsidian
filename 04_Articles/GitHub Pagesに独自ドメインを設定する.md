@@ -1,7 +1,10 @@
 ---
+tags:
+  - IT
+  - GitHub
 slug: e2dc9b8c-9cc9-48fb-ac42-ac2f6ff1fa78
 created: 2025-01-25 Sat 20:54
-updated: 2026-03-13 Fri 14:05
+updated: 2026-03-18 Wed 17:34
 ---
 参考: [GitHub Pages サイトのカスタムドメインを管理する - GitHub Docs](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
 

@@ -1,7 +1,11 @@
 ---
+tags:
+  - セキュリティ
+aliases:
+  - JSON Injection
 slug: 086a5fe6-9f72-4a88-967a-6328c67e0370
 created: 2025-01-25 Sat 20:54
-updated: 2026-03-13 Fri 14:05
+updated: 2026-03-18 Wed 17:36
 ---
 ## 概要
 

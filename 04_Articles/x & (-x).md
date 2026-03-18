@@ -1,7 +1,10 @@
 ---
+tags:
+  - 競技プログラミング
+  - 数学
 slug: 33abebf6-de8a-4a75-bdd7-4e008a1720fe
 created: 2025-01-25 Sat 20:54
-updated: 2026-03-13 Fri 14:05
+updated: 2026-03-18 Wed 17:33
 ---
 ## 概要
 

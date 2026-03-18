@@ -2,7 +2,7 @@
 tag: [Book, <%=`${book.title ? book.title.replaceAll(" ", "_") + "," : ""} ${book.authors ? book.authors.map(a => a.replaceAll(" ", "").replaceAll("　", "")).join(',') : ""}`%>]
 title: "{{title}} {{subtitle}}"
 subtitle: "{{subtitle}}"
-aurhors: <%=book.authors ? book.authors.map(author => author.replaceAll(" ", "").replaceAll("　", "")).map(author=>`\n - ${author}`).join('') : ""%>
+authors: <%=book.authors ? book.authors.map(author => author.replaceAll(" ", "").replaceAll("　", "")).map(author=>`\n - ${author}`).join('') : ""%>
 categories: <%=book.categories ? book.categories.map(category=>`\n - ${category}`).join('') : ""%>
 publisher: {{publisher}}
 publishDate: {{publishDate}}
