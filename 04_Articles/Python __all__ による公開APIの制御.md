@@ -5,7 +5,7 @@ tags:
 aliases: []
 slug: 2e3f4a5b-6c7d-8e9f-0a1b-2c3d4e5f6a7b
 created: 2026-03-19
-updated: 2026-03-19 Thu 23:22
+updated: 2026-03-19 Thu 23:51
 ---
 
 `__all__` はモジュールやパッケージが外部に対して公開する「公開API」を明示的に定義する仕組み。`from module import *` 実行時にロードされる識別子を制限できる。
