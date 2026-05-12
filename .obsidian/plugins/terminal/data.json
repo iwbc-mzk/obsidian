@@ -19,7 +19,7 @@
       "args": [],
       "executable": "powershell",
       "followTheme": true,
-      "name": "",
+      "name": "terminal",
       "platforms": {
         "win32": true
       },
