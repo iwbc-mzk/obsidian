@@ -17,6 +17,10 @@ slug: 2d201d8c-b067-42fa-bd5d-620e687e3c83
 
 - [[wgetをWindowsで使う]]
 
+## AI / 生成AI
+
+- [[AIを実務に活かす5つのパターン]]
+
 ## その他
 
 - [[github readme statsの統計情報にPrivate Repositoryも含めるようにする]]

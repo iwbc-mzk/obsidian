@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(obsidian search:*)"
+      "Bash(obsidian search:*)",
+      "Skill(obsidian-cli)"
     ]
   }
 }
