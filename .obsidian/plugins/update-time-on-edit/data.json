@@ -231,6 +231,10 @@
     "04_Articles/PyTorchのインストール手順（CUDA・GPU対応）.md": "0e5b109486c5c21cf29561443e9dfb3f40023611fac2eba082085f1d8ba7fa97",
     "04_Articles/Python subprocessで標準出力をリアルタイム取得しつつタイムアウトを実装する.md": "f33810b221f944f75c9884aafa1a5287052ee8f366f44018b125f0b22902d19c",
     "04_Articles/AIを実務に活かす5つのパターン.md": "a6d9e8faad063150527995d0e068bd6ca3f5c1349618d17e6fc278e235fbf819",
-    "04_Articles/NIMBYとは - 発生のメカニズムと解決方法.md": "e7a45f0a7c9e25267f18ad51ac788f9f208d0722c7b6bb5fd572e8b7ec836aae"
+    "04_Articles/NIMBYとは - 発生のメカニズムと解決方法.md": "e7a45f0a7c9e25267f18ad51ac788f9f208d0722c7b6bb5fd572e8b7ec836aae",
+    "04_Articles/SQLのCHECK制約の基礎と書き方.md": "bdb22481ea7a70fa9f66305a885d97128d112b7b688e47a7250a6141a3f53d3c",
+    "04_Articles/SQLのCHECK制約とNULL値の扱い.md": "4dae940e6f4a114becd5419e727cd139767f915a1f5b66e75005978f4c53658c",
+    "04_Articles/SQLのCHECK制約における主要DBの実装差異.md": "fe8089573f2e0b0f270033c29f60dd78dd655fd45043710a1a276caa11d53c36",
+    "04_Articles/BigQueryにおけるデータバリデーション手法.md": "2fddfdb6f94fea0ed3a313098219aba050d55da077b9a403aff8f3ce0dbb6bc3"
   }
 }
